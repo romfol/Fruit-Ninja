@@ -1,8 +1,6 @@
 import { Background } from './background';
 import { PlayButton } from './play-button';
-
-
-const random = (max, min = 0) => min + (max - min) * Math.random();
+import { Fruits } from './fruits';
 
 class Sketch {
   constructor() {
@@ -37,6 +35,9 @@ class Sketch {
   scene2() {
     this.stage.removeChild(this.play.bitmap);
 
+    this.fruits = new Fruits();
+    this.stage.addChild(this.fruits.container);
+    this.fruits.launch()
   }
 
 

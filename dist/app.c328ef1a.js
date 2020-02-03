@@ -165,17 +165,48 @@ var PlayButton = function PlayButton(x, y) {
   this.image.src = _playBtn.default;
   this.bitmap = new createjs.Bitmap(this.image);
   this.bitmap.x = x;
-  this.bitmap.y = y; // this.bitmap.scaleX = 0.08;
-  // this.bitmap.scaleY = 0.07;
+  this.bitmap.y = y;
 };
 
 exports.PlayButton = PlayButton;
-},{"./assets/play-btn.png":"assets/play-btn.png"}],"app.js":[function(require,module,exports) {
+},{"./assets/play-btn.png":"assets/play-btn.png"}],"assets/game_fruit_blue.png":[function(require,module,exports) {
+module.exports = "/game_fruit_blue.a68da932.png";
+},{}],"fruit.js":[function(require,module,exports) {
 "use strict";
 
-var _background = require("./background");
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Fruit = void 0;
 
-var _playButton = require("./play-button");
+var _game_fruit_blue = _interopRequireDefault(require("./assets/game_fruit_blue.png"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Fruit = function Fruit(x, y) {
+  _classCallCheck(this, Fruit);
+
+  this.image = new Image();
+  this.image.src = _game_fruit_blue.default;
+  this.bitmap = new createjs.Bitmap(this.image);
+  this.bitmap.x = x;
+  this.bitmap.y = y;
+  this.bitmap.scaleX = 0.5;
+  this.bitmap.scaleY = 0.5;
+};
+
+exports.Fruit = Fruit;
+},{"./assets/game_fruit_blue.png":"assets/game_fruit_blue.png"}],"fruits.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Fruits = void 0;
+
+var _fruit = require("./fruit");
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -187,6 +218,94 @@ var random = function random(max) {
   var min = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
   return min + (max - min) * Math.random();
 };
+
+var Fruits =
+/*#__PURE__*/
+function () {
+  function Fruits() {
+    _classCallCheck(this, Fruits);
+
+    this.container = new createjs.Container();
+  }
+
+  _createClass(Fruits, [{
+    key: "launch",
+    value: function launch() {
+      console.log("launch");
+
+      for (var i = 0; i < 4; i++) {
+        this.createAndLaunch();
+      }
+    }
+  }, {
+    key: "createAndLaunch",
+    value: function createAndLaunch() {
+      var fruit = this.createFruit();
+      this.launchFruit(fruit); // console.log()
+      // const fruit =  new Fruit(random(200), random(200));
+      // this.container.addChild(fruit.bitmap);
+    }
+  }, {
+    key: "createFruit",
+    value: function createFruit() {
+      var fruit = new _fruit.Fruit(random(200), random(200));
+      this.container.addChild(fruit.bitmap);
+      return fruit;
+    }
+  }, {
+    key: "launchFruit",
+    value: function launchFruit(fruit) {
+      createjs.Tween.get(fruit.bitmap, {
+        loop: false
+      }).to({
+        x: 320
+      }, 1000).call(function (event) {//   console.log(000, goose);
+        //   goose.remove()
+        //   this.container.removeChild(goose);
+        //   goose = null;
+        //   this.createAndLaunchGoose()
+      });
+    }
+  }, {
+    key: "launchGooseX",
+    value: function launchGooseX(goose, timerLength) {
+      var _this = this;
+
+      createjs.Tween.get(goose.container, {
+        loop: false
+      }).to({
+        x: this.getEndPosition().x
+      }, timerLength).call(function (event) {
+        // console.log(goose);
+        goose.remove();
+
+        _this.container.removeChild(goose);
+
+        goose = null;
+
+        _this.createAndLaunchGoose();
+      });
+    }
+  }]);
+
+  return Fruits;
+}();
+
+exports.Fruits = Fruits;
+},{"./fruit":"fruit.js"}],"app.js":[function(require,module,exports) {
+"use strict";
+
+var _background = require("./background");
+
+var _playButton = require("./play-button");
+
+var _fruits = require("./fruits");
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 var Sketch =
 /*#__PURE__*/
@@ -223,6 +342,9 @@ function () {
     key: "scene2",
     value: function scene2() {
       this.stage.removeChild(this.play.bitmap);
+      this.fruits = new _fruits.Fruits();
+      this.stage.addChild(this.fruits.container);
+      this.fruits.launch();
     }
   }]);
 
@@ -230,7 +352,7 @@ function () {
 }();
 
 var app = new Sketch();
-},{"./background":"background.js","./play-button":"play-button.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./background":"background.js","./play-button":"play-button.js","./fruits":"fruits.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
