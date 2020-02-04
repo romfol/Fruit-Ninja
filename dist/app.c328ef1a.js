@@ -188,7 +188,11 @@ var Fruit = function Fruit(x, y, fruit) {
   this.bitmap.x = x;
   this.bitmap.y = y;
   this.bitmap.scaleX = 0.5;
-  this.bitmap.scaleY = 0.5;
+  this.bitmap.scaleY = 0.5; // this.bitmap.addEventListener("click", () => {
+  //     this.bitmap.x = 1000;
+  //     console.log(2222222222);
+  //     // evt.remove(); // removes this listener.
+  // });
 };
 
 exports.Fruit = Fruit;
@@ -259,7 +263,6 @@ function () {
     value: function launch() {
       var _this = this;
 
-      console.log("launch");
       setInterval(function () {
         _this.createAndLaunch();
       }, 2000);
@@ -274,44 +277,29 @@ function () {
     key: "createFruit",
     value: function createFruit() {
       var fruit = new _fruit.Fruit(random(window.innerWidth), window.innerHeight, randomFruit());
+      var listener = fruit.on("click", this.sliceFruit); // fruit.bitmap.on("click", this.sliceFruit);
+
       this.container.addChild(fruit.bitmap);
       return fruit;
     }
   }, {
+    key: "sliceFruit",
+    value: function sliceFruit(e) {
+      console.log("sliceFruit", e);
+    }
+  }, {
     key: "launchFruit",
     value: function launchFruit(fruit) {
-      createjs.Tween.get(fruit.bitmap, {
-        loop: false
-      }).to({
-        rotation: 90,
-        rotationDir: -1,
-        x: window.innerWidth / random(6, 1.1),
+      createjs.Tween.get(fruit.bitmap).to({
+        rotation: random(200),
+        x: random(40, window.innerWidth - 40),
         y: random(window.innerHeight * 0.1, 30)
-      }, 1300).to({
-        rotation: 180,
-        rotationDir: -1,
+      }, 2100).to({
+        rotation: random(200),
         x: window.innerWidth / random(6, 1.1),
         y: window.innerHeight * 1.2
-      }, 1300).call(function (click) {
-        console.log(11);
-      });
-    } // launchGooseX(goose, timerLength) {
-    //   createjs.Tween
-    //   .get(goose.container, {
-    //     loop: false
-    //   })
-    //   .to({
-    //     x: this.getEndPosition().x
-    //   }, timerLength).
-    //   call((event) => {
-    //     // console.log(goose);
-    //     goose.remove()
-    //     this.container.removeChild(goose);
-    //     goose = null;
-    //     this.createAndLaunchGoose()
-    //   })
-    // }
-
+      }, 2100).call(function (click) {});
+    }
   }]);
 
   return Fruits;
@@ -406,7 +394,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37071" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37991" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

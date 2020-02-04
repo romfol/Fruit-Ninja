@@ -10,7 +10,13 @@ export class Fruit {
         this.bitmap.y = y;
         this.bitmap.scaleX = 0.5;
         this.bitmap.scaleY = 0.5;
-    }
 
+
+        // this.bitmap.addEventListener("click", () => {
+        //     this.bitmap.x = 1000;
+        //     console.log(2222222222);
+        //     // evt.remove(); // removes this listener.
+        // });
+    }
 
 }

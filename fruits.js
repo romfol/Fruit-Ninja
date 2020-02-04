@@ -18,7 +18,6 @@ export class Fruits {
     }
 
     launch() {
-        console.log("launch")
           setInterval(() => {
             this.createAndLaunch();
           }, 2000)
@@ -26,49 +25,35 @@ export class Fruits {
 
     createAndLaunch() {
         const fruit = this.createFruit()
-
         this.launchFruit(fruit);
     }
 
     createFruit() {
         const fruit = new Fruit(random(window.innerWidth), window.innerHeight, randomFruit());
+        var listener = fruit.on("click", this.sliceFruit)
+        // fruit.bitmap.on("click", this.sliceFruit);
         this.container.addChild(fruit.bitmap);
         return fruit;
     }
 
+    sliceFruit(e) {
+      console.log("sliceFruit", e);
+    }
+
     launchFruit(fruit) {
-        createjs.Tween
-        .get(fruit.bitmap, {
-          loop: false
-        })
+        createjs.Tween.get(fruit.bitmap)
         .to({
-          rotation:90, rotationDir:-1,
-          x: window.innerWidth / random(6, 1.1),
+          rotation: random(200),
+          x: random(40, window.innerWidth - 40),
           y: random(window.innerHeight*0.1 , 30)
-        }, 1300)
+        }, 2100)
         .to({
-          rotation:180, rotationDir:-1,
+          rotation: random(200),
           x: window.innerWidth / random(6, 1.1),
           y: window.innerHeight*1.2
-        }, 1300).
+        }, 2100).
         call((click) => {
-          console.log(11)
+
         })
     }
-      // launchGooseX(goose, timerLength) {
-      //   createjs.Tween
-      //   .get(goose.container, {
-      //     loop: false
-      //   })
-      //   .to({
-      //     x: this.getEndPosition().x
-      //   }, timerLength).
-      //   call((event) => {
-      //     // console.log(goose);
-      //     goose.remove()
-      //     this.container.removeChild(goose);
-      //     goose = null;
-      //     this.createAndLaunchGoose()
-      //   })
-      // }
 }
