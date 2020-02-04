@@ -9,23 +9,20 @@ export class Fruits {
 
     launch() {
         console.log("launch")
-        for (let i = 0; i < 4; i++) {
+          setInterval(() => {
             this.createAndLaunch();
-        }
+          }, 2000)
     }
 
     createAndLaunch() {
         const fruit = this.createFruit()
 
         this.launchFruit(fruit);
-        // console.log()
-
-        // const fruit =  new Fruit(random(200), random(200));
-        // this.container.addChild(fruit.bitmap);
     }
 
     createFruit() {
-        const fruit =  new Fruit(random(200), random(200));
+
+        const fruit = new Fruit(random(window.innerWidth), window.innerHeight);
         this.container.addChild(fruit.bitmap);
         return fruit;
     }
@@ -36,30 +33,31 @@ export class Fruits {
           loop: false
         })
         .to({
-          x: 320
-        }, 1000).
+          x: window.innerWidth / random(6, 1.1),
+          y: random(window.innerHeight*0.2 , 30)
+        }, 1800)
+        .to({
+          x: window.innerWidth / random(6, 1.1),
+          y: window.innerHeight
+        }, 1800).
         call((event) => {
-        //   console.log(000, goose);
-        //   goose.remove()
-        //   this.container.removeChild(goose);
-        //   goose = null;
-        //   this.createAndLaunchGoose()
+
         })
     }
-      launchGooseX(goose, timerLength) {
-        createjs.Tween
-        .get(goose.container, {
-          loop: false
-        })
-        .to({
-          x: this.getEndPosition().x
-        }, timerLength).
-        call((event) => {
-          // console.log(goose);
-          goose.remove()
-          this.container.removeChild(goose);
-          goose = null;
-          this.createAndLaunchGoose()
-        })
-      }
+      // launchGooseX(goose, timerLength) {
+      //   createjs.Tween
+      //   .get(goose.container, {
+      //     loop: false
+      //   })
+      //   .to({
+      //     x: this.getEndPosition().x
+      //   }, timerLength).
+      //   call((event) => {
+      //     // console.log(goose);
+      //     goose.remove()
+      //     this.container.removeChild(goose);
+      //     goose = null;
+      //     this.createAndLaunchGoose()
+      //   })
+      // }
 }
