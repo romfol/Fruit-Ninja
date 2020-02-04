@@ -1,7 +1,7 @@
-import fruit from './assets/game_fruit_blue.png'
+
 
 export class Fruit {
-    constructor(x, y) {
+    constructor(x, y, fruit) {
         this.image = new Image();
         this.image.src = fruit;
 

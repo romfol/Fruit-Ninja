@@ -169,9 +169,7 @@ var PlayButton = function PlayButton(x, y) {
 };
 
 exports.PlayButton = PlayButton;
-},{"./assets/play-btn.png":"assets/play-btn.png"}],"assets/game_fruit_blue.png":[function(require,module,exports) {
-module.exports = "/game_fruit_blue.a68da932.png";
-},{}],"fruit.js":[function(require,module,exports) {
+},{"./assets/play-btn.png":"assets/play-btn.png"}],"fruit.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -179,17 +177,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Fruit = void 0;
 
-var _game_fruit_blue = _interopRequireDefault(require("./assets/game_fruit_blue.png"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Fruit = function Fruit(x, y) {
+var Fruit = function Fruit(x, y, fruit) {
   _classCallCheck(this, Fruit);
 
   this.image = new Image();
-  this.image.src = _game_fruit_blue.default;
+  this.image.src = fruit;
   this.bitmap = new createjs.Bitmap(this.image);
   this.bitmap.x = x;
   this.bitmap.y = y;
@@ -198,7 +192,19 @@ var Fruit = function Fruit(x, y) {
 };
 
 exports.Fruit = Fruit;
-},{"./assets/game_fruit_blue.png":"assets/game_fruit_blue.png"}],"fruits.js":[function(require,module,exports) {
+},{}],"assets/game_fruit_blue.png":[function(require,module,exports) {
+module.exports = "/game_fruit_blue.a68da932.png";
+},{}],"assets/game_fruit_green.png":[function(require,module,exports) {
+module.exports = "/game_fruit_green.f72d42b1.png";
+},{}],"assets/game_fruit_orange.png":[function(require,module,exports) {
+module.exports = "/game_fruit_orange.4296c84b.png";
+},{}],"assets/game_fruit_purple.png":[function(require,module,exports) {
+module.exports = "/game_fruit_purple.d699916d.png";
+},{}],"assets/game_fruit_red.png":[function(require,module,exports) {
+module.exports = "/game_fruit_red.96068379.png";
+},{}],"assets/game_fruit_yellow.png":[function(require,module,exports) {
+module.exports = "/game_fruit_yellow.437813a8.png";
+},{}],"fruits.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -208,11 +214,27 @@ exports.Fruits = void 0;
 
 var _fruit = require("./fruit");
 
+var _game_fruit_blue = _interopRequireDefault(require("./assets/game_fruit_blue.png"));
+
+var _game_fruit_green = _interopRequireDefault(require("./assets/game_fruit_green.png"));
+
+var _game_fruit_orange = _interopRequireDefault(require("./assets/game_fruit_orange.png"));
+
+var _game_fruit_purple = _interopRequireDefault(require("./assets/game_fruit_purple.png"));
+
+var _game_fruit_red = _interopRequireDefault(require("./assets/game_fruit_red.png"));
+
+var _game_fruit_yellow = _interopRequireDefault(require("./assets/game_fruit_yellow.png"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var fruits = [_game_fruit_blue.default, _game_fruit_green.default, _game_fruit_orange.default, _game_fruit_purple.default, _game_fruit_red.default, _game_fruit_yellow.default];
 
 var random = function random(max) {
   var min = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
@@ -247,7 +269,7 @@ function () {
   }, {
     key: "createFruit",
     value: function createFruit() {
-      var fruit = new _fruit.Fruit(random(window.innerWidth), window.innerHeight);
+      var fruit = new _fruit.Fruit(random(window.innerWidth), window.innerHeight, fruits[Math.floor(random(6))]);
       this.container.addChild(fruit.bitmap);
       return fruit;
     }
@@ -258,11 +280,11 @@ function () {
         loop: false
       }).to({
         x: window.innerWidth / random(6, 1.1),
-        y: random(window.innerHeight * 0.2, 30)
-      }, 1800).to({
+        y: random(window.innerHeight * 0.1, 30)
+      }, 1300).to({
         x: window.innerWidth / random(6, 1.1),
         y: window.innerHeight
-      }, 1800).call(function (event) {});
+      }, 1300).call(function (event) {});
     } // launchGooseX(goose, timerLength) {
     //   createjs.Tween
     //   .get(goose.container, {
@@ -286,7 +308,7 @@ function () {
 }();
 
 exports.Fruits = Fruits;
-},{"./fruit":"fruit.js"}],"app.js":[function(require,module,exports) {
+},{"./fruit":"fruit.js","./assets/game_fruit_blue.png":"assets/game_fruit_blue.png","./assets/game_fruit_green.png":"assets/game_fruit_green.png","./assets/game_fruit_orange.png":"assets/game_fruit_orange.png","./assets/game_fruit_purple.png":"assets/game_fruit_purple.png","./assets/game_fruit_red.png":"assets/game_fruit_red.png","./assets/game_fruit_yellow.png":"assets/game_fruit_yellow.png"}],"app.js":[function(require,module,exports) {
 "use strict";
 
 var _background = require("./background");
@@ -374,7 +396,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34271" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33675" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
