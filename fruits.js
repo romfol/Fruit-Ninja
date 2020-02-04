@@ -10,6 +10,8 @@ const fruits = [blueFruit, greenFruit, orangeFruit, purpleFruit, redFruit, yello
 
 const random = (max, min = 0) => min + (max - min) * Math.random();
 
+const randomFruit = () => fruits[Math.floor(random(6))];
+
 export class Fruits {
     constructor() {
         this.container = new createjs.Container();
@@ -29,7 +31,7 @@ export class Fruits {
     }
 
     createFruit() {
-        const fruit = new Fruit(random(window.innerWidth), window.innerHeight, fruits[Math.floor(random(6))]);
+        const fruit = new Fruit(random(window.innerWidth), window.innerHeight, randomFruit());
         this.container.addChild(fruit.bitmap);
         return fruit;
     }
@@ -40,15 +42,17 @@ export class Fruits {
           loop: false
         })
         .to({
+          rotation:90, rotationDir:-1,
           x: window.innerWidth / random(6, 1.1),
           y: random(window.innerHeight*0.1 , 30)
         }, 1300)
         .to({
+          rotation:180, rotationDir:-1,
           x: window.innerWidth / random(6, 1.1),
-          y: window.innerHeight
+          y: window.innerHeight*1.2
         }, 1300).
-        call((event) => {
-
+        call((click) => {
+          console.log(11)
         })
     }
       // launchGooseX(goose, timerLength) {

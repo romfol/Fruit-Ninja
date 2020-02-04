@@ -241,6 +241,10 @@ var random = function random(max) {
   return min + (max - min) * Math.random();
 };
 
+var randomFruit = function randomFruit() {
+  return fruits[Math.floor(random(6))];
+};
+
 var Fruits =
 /*#__PURE__*/
 function () {
@@ -269,7 +273,7 @@ function () {
   }, {
     key: "createFruit",
     value: function createFruit() {
-      var fruit = new _fruit.Fruit(random(window.innerWidth), window.innerHeight, fruits[Math.floor(random(6))]);
+      var fruit = new _fruit.Fruit(random(window.innerWidth), window.innerHeight, randomFruit());
       this.container.addChild(fruit.bitmap);
       return fruit;
     }
@@ -279,12 +283,18 @@ function () {
       createjs.Tween.get(fruit.bitmap, {
         loop: false
       }).to({
+        rotation: 90,
+        rotationDir: -1,
         x: window.innerWidth / random(6, 1.1),
         y: random(window.innerHeight * 0.1, 30)
       }, 1300).to({
+        rotation: 180,
+        rotationDir: -1,
         x: window.innerWidth / random(6, 1.1),
-        y: window.innerHeight
-      }, 1300).call(function (event) {});
+        y: window.innerHeight * 1.2
+      }, 1300).call(function (click) {
+        console.log(11);
+      });
     } // launchGooseX(goose, timerLength) {
     //   createjs.Tween
     //   .get(goose.container, {
@@ -396,7 +406,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33675" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37071" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
