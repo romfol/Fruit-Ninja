@@ -46,7 +46,7 @@ class Sketch {
   }
 
   scene3() {
-    this.text = new ResultText(window.clicks, window.innerWidth / 3, window.innerHeight / 3);
+    this.text = new ResultText(window.points, window.innerWidth / 3, window.innerHeight / 3);
     this.stage.addChild(this.text.text);
   }
 }

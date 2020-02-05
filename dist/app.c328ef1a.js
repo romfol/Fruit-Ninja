@@ -255,7 +255,7 @@ function () {
     _classCallCheck(this, Fruits);
 
     this.container = new createjs.Container();
-    window.clicks = 0;
+    window.points = 0;
   }
 
   _createClass(Fruits, [{
@@ -282,7 +282,7 @@ function () {
       fruit.bitmap.addEventListener('mousedown', function () {
         _this2.removeFruit(fruit.bitmap);
 
-        window.clicks++;
+        window.points += Math.ceil(random(29, 4));
       });
       this.container.addChild(fruit.bitmap);
       return fruit;
@@ -385,7 +385,7 @@ function () {
     value: function init() {
       this.timer = new _timer.Timer(this.time);
       this.container.addChild(this.timer.timer);
-      this.text = new _resultText.ResultText(this.score = 0, window.innerWidth - 150, 20);
+      this.text = new _resultText.ResultText(window.points, window.innerWidth - 150, 20);
       this.container.addChild(this.text.text);
       this.timerId = setInterval(this.countdown.bind(this), 1000);
     }
@@ -396,7 +396,7 @@ function () {
         clearTimeout(this.timerId);
       } else {
         this.timer.timer.text--;
-        this.text.text.text = "Total score: ".concat(window.clicks);
+        this.text.text.text = "Total score: ".concat(window.points);
       }
     }
   }]);
@@ -473,7 +473,7 @@ function () {
   }, {
     key: "scene3",
     value: function scene3() {
-      this.text = new _resultText.ResultText(window.clicks, window.innerWidth / 3, window.innerHeight / 3);
+      this.text = new _resultText.ResultText(window.points, window.innerWidth / 3, window.innerHeight / 3);
       this.stage.addChild(this.text.text);
     }
   }]);
@@ -510,7 +510,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52979" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58143" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

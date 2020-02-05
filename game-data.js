@@ -10,7 +10,7 @@ export class GameData {
     this.timer = new Timer(this.time);
     this.container.addChild(this.timer.timer);
 
-    this.text = new ResultText((this.score = 0), window.innerWidth - 150, 20);
+    this.text = new ResultText(window.points, window.innerWidth - 150, 20);
     this.container.addChild(this.text.text);
 
     this.timerId = setInterval(this.countdown.bind(this), 1000);
@@ -21,7 +21,7 @@ export class GameData {
       clearTimeout(this.timerId);
     } else {
       this.timer.timer.text--;
-      this.text.text.text = `Total score: ${window.clicks}`;
+      this.text.text.text = `Total score: ${window.points}`;
     }
   }
 }

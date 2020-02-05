@@ -15,7 +15,7 @@ const randomFruit = () => fruits[Math.floor(random(6))];
 export class Fruits {
   constructor() {
     this.container = new createjs.Container();
-    window.clicks = 0;
+    window.points = 0;
   }
 
   launch() {
@@ -34,7 +34,7 @@ export class Fruits {
 
     fruit.bitmap.addEventListener('mousedown', () => {
       this.removeFruit(fruit.bitmap);
-      window.clicks++;
+      window.points += Math.ceil(random(29, 4));
     });
 
     this.container.addChild(fruit.bitmap);
