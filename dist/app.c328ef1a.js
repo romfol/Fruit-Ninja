@@ -303,7 +303,7 @@ function () {
         x: window.innerWidth / random(6, 1.1),
         y: window.innerHeight * 1.2
       }, 2100).call(function () {
-        _this3.container.removeChild(fruit.bitmap);
+        _this3.removeFruit(fruit.bitmap);
       });
     }
   }]);
@@ -328,11 +328,76 @@ var ResultText = function ResultText(score) {
   this.text = new createjs.Text("Total score: ".concat(score), "20px Arial", "white");
   this.text.x = window.innerWidth / 4;
   this.text.y = window.innerHeight / 3;
-  this.text.textBaseline = "alphabetic";
 };
 
 exports.ResultText = ResultText;
-},{}],"app.js":[function(require,module,exports) {
+},{}],"timer.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Timer = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Timer = function Timer() {
+  _classCallCheck(this, Timer);
+
+  this.timer = new createjs.Text(30, "20px Arial", "white");
+  this.timer.x = 20;
+  this.timer.y = 20;
+};
+
+exports.Timer = Timer;
+},{}],"game-data.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.GameData = void 0;
+
+var _timer = require("./timer");
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var GameData =
+/*#__PURE__*/
+function () {
+  function GameData() {
+    _classCallCheck(this, GameData);
+
+    this.container = new createjs.Container();
+  }
+
+  _createClass(GameData, [{
+    key: "init",
+    value: function init() {
+      this.timer = new _timer.Timer(this.time);
+      this.container.addChild(this.timer.timer);
+      this.timerId = setInterval(this.countdown.bind(this), 1000);
+    }
+  }, {
+    key: "countdown",
+    value: function countdown() {
+      if (this.timer.timer.text == 0) {
+        clearTimeout(this.timerId);
+      } else {
+        this.timer.timer.text--;
+      }
+    }
+  }]);
+
+  return GameData;
+}();
+
+exports.GameData = GameData;
+},{"./timer":"timer.js"}],"app.js":[function(require,module,exports) {
 "use strict";
 
 var _background = require("./background");
@@ -342,6 +407,8 @@ var _playButton = require("./play-button");
 var _fruits = require("./fruits");
 
 var _resultText = require("./result-text");
+
+var _gameData = require("./game-data");
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -385,14 +452,21 @@ function () {
       this.fruits = new _fruits.Fruits();
       this.stage.addChild(this.fruits.container);
       this.fruits.launch();
+      this.gameData = new _gameData.GameData();
+      this.stage.addChild(this.gameData.container);
+      this.gameData.init();
+      this.stage.addChild(this.fruits.container);
       setTimeout(function () {
+        _this.stage.removeChild(_this.fruits.container);
+
+        _this.stage.removeChild(_this.gameData.container);
+
         _this.scene3();
-      }, 11130000);
+      }, 30000);
     }
   }, {
     key: "scene3",
     value: function scene3() {
-      this.stage.removeChild(this.fruits.container);
       this.text = new _resultText.ResultText(this.score);
       this.stage.addChild(this.text.text);
     }
@@ -402,7 +476,7 @@ function () {
 }();
 
 var app = new Sketch();
-},{"./background":"background.js","./play-button":"play-button.js","./fruits":"fruits.js","./result-text":"result-text.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./background":"background.js","./play-button":"play-button.js","./fruits":"fruits.js","./result-text":"result-text.js","./game-data":"game-data.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -430,7 +504,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35389" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37405" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

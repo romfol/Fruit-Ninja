@@ -54,7 +54,7 @@ export class Fruits {
           y: window.innerHeight*1.2
         }, 2100)
         .call(() => {
-          this.container.removeChild(fruit.bitmap);
+          this.removeFruit(fruit.bitmap);
         })
     }
 }

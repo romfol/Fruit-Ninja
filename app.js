@@ -2,6 +2,7 @@ import { Background } from './background';
 import { PlayButton } from './play-button';
 import { Fruits } from './fruits';
 import { ResultText } from './result-text';
+import { GameData } from './game-data';
 
 class Sketch {
   constructor() {
@@ -29,21 +30,29 @@ class Sketch {
 
   scene2() {
     this.stage.removeChild(this.play.bitmap);
+
     this.fruits = new Fruits();
     this.stage.addChild(this.fruits.container);
-    this.fruits.launch()
+    this.fruits.launch();
+
+    this.gameData = new GameData();
+    this.stage.addChild(this.gameData.container);
+    this.gameData.init();
+
+    this.stage.addChild(this.fruits.container);
+
     setTimeout(() => {
-            this.scene3()
-    }, 11130000)
+      this.stage.removeChild(this.fruits.container);
+      this.stage.removeChild(this.gameData.container);
+      this.scene3()
+    }, 30000);
   }
 
   scene3() {
-    this.stage.removeChild(this.fruits.container);
+
     this.text = new ResultText(this.score);
     this.stage.addChild(this.text.text);
   }
-
-
 }
 
 const app = new Sketch();
