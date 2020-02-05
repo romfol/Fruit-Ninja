@@ -1,1 +1,1 @@
-app on Pixi.js
+application on Pixi.js
