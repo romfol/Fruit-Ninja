@@ -255,7 +255,7 @@ function () {
     _classCallCheck(this, Fruits);
 
     this.container = new createjs.Container();
-    this.clicks = 0;
+    window.clicks = 0;
   }
 
   _createClass(Fruits, [{
@@ -279,8 +279,10 @@ function () {
       var _this2 = this;
 
       var fruit = new _fruit.Fruit(random(window.innerWidth), window.innerHeight, randomFruit());
-      fruit.bitmap.addEventListener("mousedown", function () {
-        return _this2.removeFruit(fruit.bitmap);
+      fruit.bitmap.addEventListener('mousedown', function () {
+        _this2.removeFruit(fruit.bitmap);
+
+        window.clicks++;
       });
       this.container.addChild(fruit.bitmap);
       return fruit;
@@ -289,7 +291,6 @@ function () {
     key: "removeFruit",
     value: function removeFruit(fruit) {
       this.container.removeChild(fruit);
-      this.clicks++;
     }
   }, {
     key: "launchFruit",
@@ -395,6 +396,7 @@ function () {
         clearTimeout(this.timerId);
       } else {
         this.timer.timer.text--;
+        this.text.text.text = "Total score: ".concat(window.clicks);
       }
     }
   }]);
@@ -429,7 +431,6 @@ function () {
     _classCallCheck(this, Sketch);
 
     this.stage = new createjs.Stage('demoCanvas');
-    this.score = 0;
     this.addObjects();
   }
 
@@ -462,10 +463,6 @@ function () {
       this.stage.addChild(this.gameData.container);
       this.gameData.init();
       setTimeout(function () {
-        console.log(_this.gameData.text.text);
-        console.log(_this.gameData.text.text = _this.fruits.clicks);
-      }, 7000);
-      setTimeout(function () {
         _this.stage.removeChild(_this.fruits.container);
 
         _this.stage.removeChild(_this.gameData.container);
@@ -476,7 +473,7 @@ function () {
   }, {
     key: "scene3",
     value: function scene3() {
-      this.text = new _resultText.ResultText(this.score, window.innerWidth / 3, window.innerHeight / 3);
+      this.text = new _resultText.ResultText(window.clicks, window.innerWidth / 3, window.innerHeight / 3);
       this.stage.addChild(this.text.text);
     }
   }]);

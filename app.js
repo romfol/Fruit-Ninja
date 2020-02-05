@@ -7,7 +7,7 @@ import { GameData } from './game-data';
 class Sketch {
   constructor() {
     this.stage = new createjs.Stage('demoCanvas');
-    this.score = 0;
+
     this.addObjects();
   }
 
@@ -38,22 +38,15 @@ class Sketch {
     this.stage.addChild(this.gameData.container);
     this.gameData.init();
 
-
-    setTimeout(()=> {
-      console.log(this.gameData.text.text )
-    console.log(this.gameData.text.text = this.fruits.clicks);
-    }, 7000)
-
     setTimeout(() => {
       this.stage.removeChild(this.fruits.container);
       this.stage.removeChild(this.gameData.container);
-      this.scene3()
+      this.scene3();
     }, 30000);
   }
 
   scene3() {
-
-    this.text = new ResultText(this.score, window.innerWidth/3, window.innerHeight/3);
+    this.text = new ResultText(window.clicks, window.innerWidth / 3, window.innerHeight / 3);
     this.stage.addChild(this.text.text);
   }
 }

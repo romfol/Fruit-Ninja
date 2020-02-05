@@ -13,50 +13,59 @@ const random = (max, min = 0) => min + (max - min) * Math.random();
 const randomFruit = () => fruits[Math.floor(random(6))];
 
 export class Fruits {
-    constructor() {
-        this.container = new createjs.Container();
-        this.clicks = 0;
-    }
+  constructor() {
+    this.container = new createjs.Container();
+    window.clicks = 0;
+  }
 
-    launch() {
-          setInterval(() => {
-            this.createAndLaunch();
-          }, 2000)
-    }
+  launch() {
+    setInterval(() => {
+      this.createAndLaunch();
+    }, 2000);
+  }
 
-    createAndLaunch() {
-        const fruit = this.createFruit()
-        this.launchFruit(fruit);
-    }
+  createAndLaunch() {
+    const fruit = this.createFruit();
+    this.launchFruit(fruit);
+  }
 
-    createFruit() {
-        const fruit = new Fruit(random(window.innerWidth), window.innerHeight, randomFruit());
+  createFruit() {
+    const fruit = new Fruit(random(window.innerWidth), window.innerHeight, randomFruit());
 
-        fruit.bitmap.addEventListener("mousedown", () => this.removeFruit(fruit.bitmap))
-        this.container.addChild(fruit.bitmap);
-        return fruit;
-    }
+    fruit.bitmap.addEventListener('mousedown', () => {
+      this.removeFruit(fruit.bitmap);
+      window.clicks++;
+    });
 
-    removeFruit(fruit) {
-      this.container.removeChild(fruit);
-      this.clicks++;
-    }
+    this.container.addChild(fruit.bitmap);
+    return fruit;
+  }
 
-    launchFruit(fruit) {
-        createjs.Tween.get(fruit.bitmap)
-        .to({
+  removeFruit(fruit) {
+    this.container.removeChild(fruit);
+  }
+
+  launchFruit(fruit) {
+    createjs.Tween.get(fruit.bitmap)
+      .to(
+        {
           rotation: random(200),
           x: random(40, window.innerWidth - 40),
-          y: random(window.innerHeight*0.1 , 30)
-        }, 2100)
-        .wait(40)
-        .to({
+          y: random(window.innerHeight * 0.1, 30),
+        },
+        2100
+      )
+      .wait(40)
+      .to(
+        {
           rotation: random(200),
           x: window.innerWidth / random(6, 1.1),
-          y: window.innerHeight*1.2
-        }, 2100)
-        .call(() => {
-          this.removeFruit(fruit.bitmap);
-        })
-    }
+          y: window.innerHeight * 1.2,
+        },
+        2100
+      )
+      .call(() => {
+        this.removeFruit(fruit.bitmap);
+      });
+  }
 }
