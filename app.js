@@ -25,7 +25,6 @@ class Sketch {
   scene1() {
     createjs.Ticker.setFPS(60);
     createjs.Ticker.addEventListener('tick', this.stage);
-
   }
 
   scene2() {
@@ -39,7 +38,11 @@ class Sketch {
     this.stage.addChild(this.gameData.container);
     this.gameData.init();
 
-    this.stage.addChild(this.fruits.container);
+
+    setTimeout(()=> {
+      console.log(this.gameData.text.text )
+    console.log(this.gameData.text.text = this.fruits.clicks);
+    }, 7000)
 
     setTimeout(() => {
       this.stage.removeChild(this.fruits.container);
@@ -50,7 +53,7 @@ class Sketch {
 
   scene3() {
 
-    this.text = new ResultText(this.score);
+    this.text = new ResultText(this.score, window.innerWidth/3, window.innerHeight/3);
     this.stage.addChild(this.text.text);
   }
 }

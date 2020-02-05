@@ -255,6 +255,7 @@ function () {
     _classCallCheck(this, Fruits);
 
     this.container = new createjs.Container();
+    this.clicks = 0;
   }
 
   _createClass(Fruits, [{
@@ -288,6 +289,7 @@ function () {
     key: "removeFruit",
     value: function removeFruit(fruit) {
       this.container.removeChild(fruit);
+      this.clicks++;
     }
   }, {
     key: "launchFruit",
@@ -322,12 +324,12 @@ exports.ResultText = void 0;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var ResultText = function ResultText(score) {
+var ResultText = function ResultText(score, x, y) {
   _classCallCheck(this, ResultText);
 
   this.text = new createjs.Text("Total score: ".concat(score), "20px Arial", "white");
-  this.text.x = window.innerWidth / 4;
-  this.text.y = window.innerHeight / 3;
+  this.text.x = x;
+  this.text.y = y;
 };
 
 exports.ResultText = ResultText;
@@ -360,6 +362,8 @@ exports.GameData = void 0;
 
 var _timer = require("./timer");
 
+var _resultText = require("./result-text");
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -380,6 +384,8 @@ function () {
     value: function init() {
       this.timer = new _timer.Timer(this.time);
       this.container.addChild(this.timer.timer);
+      this.text = new _resultText.ResultText(this.score = 0, window.innerWidth - 150, 20);
+      this.container.addChild(this.text.text);
       this.timerId = setInterval(this.countdown.bind(this), 1000);
     }
   }, {
@@ -397,7 +403,7 @@ function () {
 }();
 
 exports.GameData = GameData;
-},{"./timer":"timer.js"}],"app.js":[function(require,module,exports) {
+},{"./timer":"timer.js","./result-text":"result-text.js"}],"app.js":[function(require,module,exports) {
 "use strict";
 
 var _background = require("./background");
@@ -455,7 +461,10 @@ function () {
       this.gameData = new _gameData.GameData();
       this.stage.addChild(this.gameData.container);
       this.gameData.init();
-      this.stage.addChild(this.fruits.container);
+      setTimeout(function () {
+        console.log(_this.gameData.text.text);
+        console.log(_this.gameData.text.text = _this.fruits.clicks);
+      }, 7000);
       setTimeout(function () {
         _this.stage.removeChild(_this.fruits.container);
 
@@ -467,7 +476,7 @@ function () {
   }, {
     key: "scene3",
     value: function scene3() {
-      this.text = new _resultText.ResultText(this.score);
+      this.text = new _resultText.ResultText(this.score, window.innerWidth / 3, window.innerHeight / 3);
       this.stage.addChild(this.text.text);
     }
   }]);

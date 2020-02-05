@@ -15,6 +15,7 @@ const randomFruit = () => fruits[Math.floor(random(6))];
 export class Fruits {
     constructor() {
         this.container = new createjs.Container();
+        this.clicks = 0;
     }
 
     launch() {
@@ -38,6 +39,7 @@ export class Fruits {
 
     removeFruit(fruit) {
       this.container.removeChild(fruit);
+      this.clicks++;
     }
 
     launchFruit(fruit) {
