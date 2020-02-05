@@ -188,10 +188,9 @@ var Fruit = function Fruit(x, y, fruit) {
   this.bitmap.x = x;
   this.bitmap.y = y;
   this.bitmap.scaleX = 0.5;
-  this.bitmap.scaleY = 0.5; // this.bitmap.addEventListener("click", () => {
-  //     this.bitmap.x = 1000;
-  //     console.log(2222222222);
-  //     // evt.remove(); // removes this listener.
+  this.bitmap.scaleY = 0.5; // this.bitmap.addEventListener("mousedown", (e) => {
+  //     console.log(22, e, this.bitmap);
+  //     // e.remove();
   // });
 };
 
@@ -276,29 +275,36 @@ function () {
   }, {
     key: "createFruit",
     value: function createFruit() {
-      var fruit = new _fruit.Fruit(random(window.innerWidth), window.innerHeight, randomFruit());
-      var listener = fruit.on("click", this.sliceFruit); // fruit.bitmap.on("click", this.sliceFruit);
+      var _this2 = this;
 
+      var fruit = new _fruit.Fruit(random(window.innerWidth), window.innerHeight, randomFruit());
+      fruit.bitmap.addEventListener("mousedown", function () {
+        return _this2.removeFruit(fruit.bitmap);
+      });
       this.container.addChild(fruit.bitmap);
       return fruit;
     }
   }, {
-    key: "sliceFruit",
-    value: function sliceFruit(e) {
-      console.log("sliceFruit", e);
+    key: "removeFruit",
+    value: function removeFruit(fruit) {
+      this.container.removeChild(fruit);
     }
   }, {
     key: "launchFruit",
     value: function launchFruit(fruit) {
+      var _this3 = this;
+
       createjs.Tween.get(fruit.bitmap).to({
         rotation: random(200),
         x: random(40, window.innerWidth - 40),
         y: random(window.innerHeight * 0.1, 30)
-      }, 2100).to({
+      }, 2100).wait(40).to({
         rotation: random(200),
         x: window.innerWidth / random(6, 1.1),
         y: window.innerHeight * 1.2
-      }, 2100).call(function (click) {});
+      }, 2100).call(function () {
+        _this3.container.removeChild(fruit.bitmap);
+      });
     }
   }]);
 
@@ -306,7 +312,27 @@ function () {
 }();
 
 exports.Fruits = Fruits;
-},{"./fruit":"fruit.js","./assets/game_fruit_blue.png":"assets/game_fruit_blue.png","./assets/game_fruit_green.png":"assets/game_fruit_green.png","./assets/game_fruit_orange.png":"assets/game_fruit_orange.png","./assets/game_fruit_purple.png":"assets/game_fruit_purple.png","./assets/game_fruit_red.png":"assets/game_fruit_red.png","./assets/game_fruit_yellow.png":"assets/game_fruit_yellow.png"}],"app.js":[function(require,module,exports) {
+},{"./fruit":"fruit.js","./assets/game_fruit_blue.png":"assets/game_fruit_blue.png","./assets/game_fruit_green.png":"assets/game_fruit_green.png","./assets/game_fruit_orange.png":"assets/game_fruit_orange.png","./assets/game_fruit_purple.png":"assets/game_fruit_purple.png","./assets/game_fruit_red.png":"assets/game_fruit_red.png","./assets/game_fruit_yellow.png":"assets/game_fruit_yellow.png"}],"result-text.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ResultText = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var ResultText = function ResultText(score) {
+  _classCallCheck(this, ResultText);
+
+  this.text = new createjs.Text("Total score: ".concat(score), "20px Arial", "white");
+  this.text.x = window.innerWidth / 4;
+  this.text.y = window.innerHeight / 3;
+  this.text.textBaseline = "alphabetic";
+};
+
+exports.ResultText = ResultText;
+},{}],"app.js":[function(require,module,exports) {
 "use strict";
 
 var _background = require("./background");
@@ -314,6 +340,8 @@ var _background = require("./background");
 var _playButton = require("./play-button");
 
 var _fruits = require("./fruits");
+
+var _resultText = require("./result-text");
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -328,6 +356,7 @@ function () {
     _classCallCheck(this, Sketch);
 
     this.stage = new createjs.Stage('demoCanvas');
+    this.score = 0;
     this.addObjects();
   }
 
@@ -338,12 +367,7 @@ function () {
       this.stage.addChild(this.background.bitmap);
       this.play = new _playButton.PlayButton(50, 10);
       this.stage.addChild(this.play.bitmap);
-      this.play.bitmap.addEventListener('click', this.scene2.bind(this)); // for (let index = 0; index < 100; index++) {
-      //   let snowflake = new SnowFlake(random(230), random(300));
-      //   this.stage.addChild(snowflake.circle);
-      //   this.snowflakes.push(snowflake);
-      // }
-
+      this.play.bitmap.addEventListener('click', this.scene2.bind(this));
       this.scene1();
     }
   }, {
@@ -355,10 +379,22 @@ function () {
   }, {
     key: "scene2",
     value: function scene2() {
+      var _this = this;
+
       this.stage.removeChild(this.play.bitmap);
       this.fruits = new _fruits.Fruits();
       this.stage.addChild(this.fruits.container);
       this.fruits.launch();
+      setTimeout(function () {
+        _this.scene3();
+      }, 11130000);
+    }
+  }, {
+    key: "scene3",
+    value: function scene3() {
+      this.stage.removeChild(this.fruits.container);
+      this.text = new _resultText.ResultText(this.score);
+      this.stage.addChild(this.text.text);
     }
   }]);
 
@@ -366,7 +402,7 @@ function () {
 }();
 
 var app = new Sketch();
-},{"./background":"background.js","./play-button":"play-button.js","./fruits":"fruits.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./background":"background.js","./play-button":"play-button.js","./fruits":"fruits.js","./result-text":"result-text.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -394,7 +430,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37991" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35389" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

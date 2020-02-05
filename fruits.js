@@ -30,14 +30,14 @@ export class Fruits {
 
     createFruit() {
         const fruit = new Fruit(random(window.innerWidth), window.innerHeight, randomFruit());
-        var listener = fruit.on("click", this.sliceFruit)
-        // fruit.bitmap.on("click", this.sliceFruit);
+
+        fruit.bitmap.addEventListener("mousedown", () => this.removeFruit(fruit.bitmap))
         this.container.addChild(fruit.bitmap);
         return fruit;
     }
 
-    sliceFruit(e) {
-      console.log("sliceFruit", e);
+    removeFruit(fruit) {
+      this.container.removeChild(fruit);
     }
 
     launchFruit(fruit) {
@@ -47,13 +47,14 @@ export class Fruits {
           x: random(40, window.innerWidth - 40),
           y: random(window.innerHeight*0.1 , 30)
         }, 2100)
+        .wait(40)
         .to({
           rotation: random(200),
           x: window.innerWidth / random(6, 1.1),
           y: window.innerHeight*1.2
-        }, 2100).
-        call((click) => {
-
+        }, 2100)
+        .call(() => {
+          this.container.removeChild(fruit.bitmap);
         })
     }
 }

@@ -1,5 +1,3 @@
-
-
 export class Fruit {
     constructor(x, y, fruit) {
         this.image = new Image();
@@ -11,11 +9,9 @@ export class Fruit {
         this.bitmap.scaleX = 0.5;
         this.bitmap.scaleY = 0.5;
 
-
-        // this.bitmap.addEventListener("click", () => {
-        //     this.bitmap.x = 1000;
-        //     console.log(2222222222);
-        //     // evt.remove(); // removes this listener.
+        // this.bitmap.addEventListener("mousedown", (e) => {
+        //     console.log(22, e, this.bitmap);
+        //     // e.remove();
         // });
     }
 
