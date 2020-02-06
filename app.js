@@ -6,7 +6,11 @@ import { GameData } from './src/game-data';
 
 class Sketch {
   constructor() {
-    this.stage = new createjs.Stage('demoCanvas');
+    this.canvas = document.getElementById('ninjaCanvas');
+    this.canvas.width = window.innerWidth;
+    this.canvas.height = window.innerHeight;
+
+    this.stage = new createjs.Stage('ninjaCanvas');
 
     this.addObjects();
   }

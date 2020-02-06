@@ -617,7 +617,10 @@ function () {
   function Sketch() {
     _classCallCheck(this, Sketch);
 
-    this.stage = new createjs.Stage('demoCanvas');
+    this.canvas = document.getElementById('ninjaCanvas');
+    this.canvas.width = window.innerWidth;
+    this.canvas.height = window.innerHeight;
+    this.stage = new createjs.Stage('ninjaCanvas');
     this.addObjects();
   }
 
@@ -697,7 +700,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44095" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33329" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
