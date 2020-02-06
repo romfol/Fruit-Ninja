@@ -264,7 +264,67 @@ module.exports = "/game_fruit_yellow_s.cd32b651.png";
 module.exports = "/game_fruit_yellow_l.93d8fb4f.png";
 },{}],"assets/game_fruit_yellow_r.png":[function(require,module,exports) {
 module.exports = "/game_fruit_yellow_r.a5c8387a.png";
-},{}],"fruits.js":[function(require,module,exports) {
+},{}],"helper/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.fruits = void 0;
+
+var _game_fruit_blue = _interopRequireDefault(require("../assets/game_fruit_blue.png"));
+
+var _game_fruit_blue_s = _interopRequireDefault(require("../assets/game_fruit_blue_s.png"));
+
+var _game_fruit_blue_l = _interopRequireDefault(require("../assets/game_fruit_blue_l.png"));
+
+var _game_fruit_blue_r = _interopRequireDefault(require("../assets/game_fruit_blue_r.png"));
+
+var _game_fruit_green = _interopRequireDefault(require("../assets/game_fruit_green.png"));
+
+var _game_fruit_green_s = _interopRequireDefault(require("../assets/game_fruit_green_s.png"));
+
+var _game_fruit_green_l = _interopRequireDefault(require("../assets/game_fruit_green_l.png"));
+
+var _game_fruit_green_r = _interopRequireDefault(require("../assets/game_fruit_green_r.png"));
+
+var _game_fruit_orange = _interopRequireDefault(require("../assets/game_fruit_orange.png"));
+
+var _game_fruit_orange_s = _interopRequireDefault(require("../assets/game_fruit_orange_s.png"));
+
+var _game_fruit_orange_l = _interopRequireDefault(require("../assets/game_fruit_orange_l.png"));
+
+var _game_fruit_orange_r = _interopRequireDefault(require("../assets/game_fruit_orange_r.png"));
+
+var _game_fruit_purple = _interopRequireDefault(require("../assets/game_fruit_purple.png"));
+
+var _game_fruit_purple_s = _interopRequireDefault(require("../assets/game_fruit_purple_s.png"));
+
+var _game_fruit_purple_l = _interopRequireDefault(require("../assets/game_fruit_purple_l.png"));
+
+var _game_fruit_purple_r = _interopRequireDefault(require("../assets/game_fruit_purple_r.png"));
+
+var _game_fruit_red = _interopRequireDefault(require("../assets/game_fruit_red.png"));
+
+var _game_fruit_red_s = _interopRequireDefault(require("../assets/game_fruit_red_s.png"));
+
+var _game_fruit_red_l = _interopRequireDefault(require("../assets/game_fruit_red_l.png"));
+
+var _game_fruit_red_r = _interopRequireDefault(require("../assets/game_fruit_red_r.png"));
+
+var _game_fruit_yellow = _interopRequireDefault(require("../assets/game_fruit_yellow.png"));
+
+var _game_fruit_yellow_s = _interopRequireDefault(require("../assets/game_fruit_yellow_s.png"));
+
+var _game_fruit_yellow_l = _interopRequireDefault(require("../assets/game_fruit_yellow_l.png"));
+
+var _game_fruit_yellow_r = _interopRequireDefault(require("../assets/game_fruit_yellow_r.png"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var fruits = [[_game_fruit_blue.default, _game_fruit_blue_s.default, _game_fruit_blue_l.default, _game_fruit_blue_r.default], [_game_fruit_green.default, _game_fruit_green_s.default, _game_fruit_green_l.default, _game_fruit_green_r.default], [_game_fruit_orange.default, _game_fruit_orange_s.default, _game_fruit_orange_l.default, _game_fruit_orange_r.default], [_game_fruit_purple.default, _game_fruit_purple_s.default, _game_fruit_purple_l.default, _game_fruit_purple_r.default], [_game_fruit_red.default, _game_fruit_red_s.default, _game_fruit_red_l.default, _game_fruit_red_r.default], [_game_fruit_yellow.default, _game_fruit_yellow_s.default, _game_fruit_yellow_l.default, _game_fruit_yellow_r.default]];
+exports.fruits = fruits;
+},{"../assets/game_fruit_blue.png":"assets/game_fruit_blue.png","../assets/game_fruit_blue_s.png":"assets/game_fruit_blue_s.png","../assets/game_fruit_blue_l.png":"assets/game_fruit_blue_l.png","../assets/game_fruit_blue_r.png":"assets/game_fruit_blue_r.png","../assets/game_fruit_green.png":"assets/game_fruit_green.png","../assets/game_fruit_green_s.png":"assets/game_fruit_green_s.png","../assets/game_fruit_green_l.png":"assets/game_fruit_green_l.png","../assets/game_fruit_green_r.png":"assets/game_fruit_green_r.png","../assets/game_fruit_orange.png":"assets/game_fruit_orange.png","../assets/game_fruit_orange_s.png":"assets/game_fruit_orange_s.png","../assets/game_fruit_orange_l.png":"assets/game_fruit_orange_l.png","../assets/game_fruit_orange_r.png":"assets/game_fruit_orange_r.png","../assets/game_fruit_purple.png":"assets/game_fruit_purple.png","../assets/game_fruit_purple_s.png":"assets/game_fruit_purple_s.png","../assets/game_fruit_purple_l.png":"assets/game_fruit_purple_l.png","../assets/game_fruit_purple_r.png":"assets/game_fruit_purple_r.png","../assets/game_fruit_red.png":"assets/game_fruit_red.png","../assets/game_fruit_red_s.png":"assets/game_fruit_red_s.png","../assets/game_fruit_red_l.png":"assets/game_fruit_red_l.png","../assets/game_fruit_red_r.png":"assets/game_fruit_red_r.png","../assets/game_fruit_yellow.png":"assets/game_fruit_yellow.png","../assets/game_fruit_yellow_s.png":"assets/game_fruit_yellow_s.png","../assets/game_fruit_yellow_l.png":"assets/game_fruit_yellow_l.png","../assets/game_fruit_yellow_r.png":"assets/game_fruit_yellow_r.png"}],"fruits.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -276,63 +336,13 @@ var _fruit = require("./fruit");
 
 var _fruitSplash = require("./fruit-splash");
 
-var _game_fruit_blue = _interopRequireDefault(require("./assets/game_fruit_blue.png"));
-
-var _game_fruit_blue_s = _interopRequireDefault(require("./assets/game_fruit_blue_s.png"));
-
-var _game_fruit_blue_l = _interopRequireDefault(require("./assets/game_fruit_blue_l.png"));
-
-var _game_fruit_blue_r = _interopRequireDefault(require("./assets/game_fruit_blue_r.png"));
-
-var _game_fruit_green = _interopRequireDefault(require("./assets/game_fruit_green.png"));
-
-var _game_fruit_green_s = _interopRequireDefault(require("./assets/game_fruit_green_s.png"));
-
-var _game_fruit_green_l = _interopRequireDefault(require("./assets/game_fruit_green_l.png"));
-
-var _game_fruit_green_r = _interopRequireDefault(require("./assets/game_fruit_green_r.png"));
-
-var _game_fruit_orange = _interopRequireDefault(require("./assets/game_fruit_orange.png"));
-
-var _game_fruit_orange_s = _interopRequireDefault(require("./assets/game_fruit_orange_s.png"));
-
-var _game_fruit_orange_l = _interopRequireDefault(require("./assets/game_fruit_orange_l.png"));
-
-var _game_fruit_orange_r = _interopRequireDefault(require("./assets/game_fruit_orange_r.png"));
-
-var _game_fruit_purple = _interopRequireDefault(require("./assets/game_fruit_purple.png"));
-
-var _game_fruit_purple_s = _interopRequireDefault(require("./assets/game_fruit_purple_s.png"));
-
-var _game_fruit_purple_l = _interopRequireDefault(require("./assets/game_fruit_purple_l.png"));
-
-var _game_fruit_purple_r = _interopRequireDefault(require("./assets/game_fruit_purple_r.png"));
-
-var _game_fruit_red = _interopRequireDefault(require("./assets/game_fruit_red.png"));
-
-var _game_fruit_red_s = _interopRequireDefault(require("./assets/game_fruit_red_s.png"));
-
-var _game_fruit_red_l = _interopRequireDefault(require("./assets/game_fruit_red_l.png"));
-
-var _game_fruit_red_r = _interopRequireDefault(require("./assets/game_fruit_red_r.png"));
-
-var _game_fruit_yellow = _interopRequireDefault(require("./assets/game_fruit_yellow.png"));
-
-var _game_fruit_yellow_s = _interopRequireDefault(require("./assets/game_fruit_yellow_s.png"));
-
-var _game_fruit_yellow_l = _interopRequireDefault(require("./assets/game_fruit_yellow_l.png"));
-
-var _game_fruit_yellow_r = _interopRequireDefault(require("./assets/game_fruit_yellow_r.png"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _helper = require("./helper");
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var fruits = [[_game_fruit_blue.default, _game_fruit_blue_s.default, _game_fruit_blue_l.default, _game_fruit_blue_r.default], [_game_fruit_green.default, _game_fruit_green_s.default, _game_fruit_green_l.default, _game_fruit_green_r.default], [_game_fruit_orange.default, _game_fruit_orange_s.default, _game_fruit_orange_l.default, _game_fruit_orange_r.default], [_game_fruit_purple.default, _game_fruit_purple_s.default, _game_fruit_purple_l.default, _game_fruit_purple_r.default], [_game_fruit_red.default, _game_fruit_red_s.default, _game_fruit_red_l.default, _game_fruit_red_r.default], [_game_fruit_yellow.default, _game_fruit_yellow_s.default, _game_fruit_yellow_l.default, _game_fruit_yellow_r.default]];
 
 var random = function random(max) {
   var min = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
@@ -372,7 +382,7 @@ function () {
     key: "createFruit",
     value: function createFruit() {
       var randomFruitId = randomFruit();
-      var fruit = new _fruit.Fruit(random(window.innerWidth), window.innerHeight, fruits[randomFruitId][0], randomFruitId);
+      var fruit = new _fruit.Fruit(random(window.innerWidth), window.innerHeight, _helper.fruits[randomFruitId][0], randomFruitId);
       fruit.bitmap.addEventListener('mousedown', this.fruitOnCLick.bind(this, fruit));
       this.container.addChild(fruit.bitmap);
       return fruit;
@@ -393,7 +403,7 @@ function () {
   }, {
     key: "addFruitSplash",
     value: function addFruitSplash(fruit) {
-      var fruitSplash = new _fruitSplash.FruitSplash(fruit.bitmap.x - 100, fruit.bitmap.y - 60, fruits[fruit.randomId][1]);
+      var fruitSplash = new _fruitSplash.FruitSplash(fruit.bitmap.x - 100, fruit.bitmap.y - 60, _helper.fruits[fruit.randomId][1]);
       this.container.addChild(fruitSplash.bitmap);
     }
   }, {
@@ -424,7 +434,7 @@ function () {
 }();
 
 exports.Fruits = Fruits;
-},{"./fruit":"fruit.js","./fruit-splash":"fruit-splash.js","./assets/game_fruit_blue.png":"assets/game_fruit_blue.png","./assets/game_fruit_blue_s.png":"assets/game_fruit_blue_s.png","./assets/game_fruit_blue_l.png":"assets/game_fruit_blue_l.png","./assets/game_fruit_blue_r.png":"assets/game_fruit_blue_r.png","./assets/game_fruit_green.png":"assets/game_fruit_green.png","./assets/game_fruit_green_s.png":"assets/game_fruit_green_s.png","./assets/game_fruit_green_l.png":"assets/game_fruit_green_l.png","./assets/game_fruit_green_r.png":"assets/game_fruit_green_r.png","./assets/game_fruit_orange.png":"assets/game_fruit_orange.png","./assets/game_fruit_orange_s.png":"assets/game_fruit_orange_s.png","./assets/game_fruit_orange_l.png":"assets/game_fruit_orange_l.png","./assets/game_fruit_orange_r.png":"assets/game_fruit_orange_r.png","./assets/game_fruit_purple.png":"assets/game_fruit_purple.png","./assets/game_fruit_purple_s.png":"assets/game_fruit_purple_s.png","./assets/game_fruit_purple_l.png":"assets/game_fruit_purple_l.png","./assets/game_fruit_purple_r.png":"assets/game_fruit_purple_r.png","./assets/game_fruit_red.png":"assets/game_fruit_red.png","./assets/game_fruit_red_s.png":"assets/game_fruit_red_s.png","./assets/game_fruit_red_l.png":"assets/game_fruit_red_l.png","./assets/game_fruit_red_r.png":"assets/game_fruit_red_r.png","./assets/game_fruit_yellow.png":"assets/game_fruit_yellow.png","./assets/game_fruit_yellow_s.png":"assets/game_fruit_yellow_s.png","./assets/game_fruit_yellow_l.png":"assets/game_fruit_yellow_l.png","./assets/game_fruit_yellow_r.png":"assets/game_fruit_yellow_r.png"}],"result-text.js":[function(require,module,exports) {
+},{"./fruit":"fruit.js","./fruit-splash":"fruit-splash.js","./helper":"helper/index.js"}],"result-text.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -619,7 +629,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44403" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43697" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
