@@ -1,9 +1,7 @@
-export class Fruit {
-    constructor(x, y, fruit, randomId) {
-        this.randomId = randomId;
-
+export class FruitSplash {
+    constructor(x, y, splashedFruit) {
         this.image = new Image();
-        this.image.src = fruit;
+        this.image.src = splashedFruit;
 
         this.bitmap = new createjs.Bitmap(this.image);
         this.bitmap.x = x;
