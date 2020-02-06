@@ -1,9 +1,7 @@
 import { Fruit } from './fruit';
 import { SimpleEntity } from './simple-entity';
 import { FruitSliced } from './fruit-sliced';
-import { fruits } from '../helper';
-
-const random = (max, min = 0) => min + (max - min) * Math.random();
+import { fruits, random } from '../helpers';
 
 const randomFruit = () => Math.floor(random(6));
 
@@ -13,7 +11,7 @@ export class Fruits {
     window.points = 0;
   }
 
-  launch() {
+  start() {
     setInterval(() => {
       this.createAndLaunch();
     }, 2000);
@@ -41,8 +39,9 @@ export class Fruits {
   }
 
   addSlicedFruit(fruit) {
-    const fruitSliced = new FruitSliced(fruit.bitmap.x - 100, fruit.bitmap.y - 60, fruits[fruit.randomId][2]);
-    this.container.addChild(fruitSliced.bitmap);
+    const fruitSliced = new FruitSliced(fruit.bitmap.x, fruit.bitmap.y, fruits[fruit.randomId][2], fruits[fruit.randomId][3]);
+    this.container.addChild(fruitSliced.container);
+    fruitSliced.init();
   }
 
   addFruitSplash(fruit) {

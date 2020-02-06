@@ -216,40 +216,6 @@ var SimpleEntity = function SimpleEntity(x, y, entity) {
 };
 
 exports.SimpleEntity = SimpleEntity;
-},{}],"src/fruit-sliced.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.FruitSliced = void 0;
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var FruitSliced =
-/*#__PURE__*/
-function () {
-  function FruitSliced(x, y, leftPart, rightPart) {
-    _classCallCheck(this, FruitSliced);
-
-    this.leftPart = leftPart;
-    this.rightPart = rightPart;
-    this.container = new createjs.Container();
-  }
-
-  _createClass(FruitSliced, [{
-    key: "launch",
-    value: function launch() {}
-  }]);
-
-  return FruitSliced;
-}();
-
-exports.FruitSliced = FruitSliced;
 },{}],"assets/game_fruit_blue.png":[function(require,module,exports) {
 module.exports = "/game_fruit_blue.a68da932.png";
 },{}],"assets/game_fruit_blue_s.png":[function(require,module,exports) {
@@ -298,13 +264,13 @@ module.exports = "/game_fruit_yellow_s.cd32b651.png";
 module.exports = "/game_fruit_yellow_l.93d8fb4f.png";
 },{}],"assets/game_fruit_yellow_r.png":[function(require,module,exports) {
 module.exports = "/game_fruit_yellow_r.a5c8387a.png";
-},{}],"helper/index.js":[function(require,module,exports) {
+},{}],"helpers/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.fruits = void 0;
+exports.random = exports.fruits = void 0;
 
 var _game_fruit_blue = _interopRequireDefault(require("../assets/game_fruit_blue.png"));
 
@@ -358,7 +324,76 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var fruits = [[_game_fruit_blue.default, _game_fruit_blue_s.default, _game_fruit_blue_l.default, _game_fruit_blue_r.default], [_game_fruit_green.default, _game_fruit_green_s.default, _game_fruit_green_l.default, _game_fruit_green_r.default], [_game_fruit_orange.default, _game_fruit_orange_s.default, _game_fruit_orange_l.default, _game_fruit_orange_r.default], [_game_fruit_purple.default, _game_fruit_purple_s.default, _game_fruit_purple_l.default, _game_fruit_purple_r.default], [_game_fruit_red.default, _game_fruit_red_s.default, _game_fruit_red_l.default, _game_fruit_red_r.default], [_game_fruit_yellow.default, _game_fruit_yellow_s.default, _game_fruit_yellow_l.default, _game_fruit_yellow_r.default]];
 exports.fruits = fruits;
-},{"../assets/game_fruit_blue.png":"assets/game_fruit_blue.png","../assets/game_fruit_blue_s.png":"assets/game_fruit_blue_s.png","../assets/game_fruit_blue_l.png":"assets/game_fruit_blue_l.png","../assets/game_fruit_blue_r.png":"assets/game_fruit_blue_r.png","../assets/game_fruit_green.png":"assets/game_fruit_green.png","../assets/game_fruit_green_s.png":"assets/game_fruit_green_s.png","../assets/game_fruit_green_l.png":"assets/game_fruit_green_l.png","../assets/game_fruit_green_r.png":"assets/game_fruit_green_r.png","../assets/game_fruit_orange.png":"assets/game_fruit_orange.png","../assets/game_fruit_orange_s.png":"assets/game_fruit_orange_s.png","../assets/game_fruit_orange_l.png":"assets/game_fruit_orange_l.png","../assets/game_fruit_orange_r.png":"assets/game_fruit_orange_r.png","../assets/game_fruit_purple.png":"assets/game_fruit_purple.png","../assets/game_fruit_purple_s.png":"assets/game_fruit_purple_s.png","../assets/game_fruit_purple_l.png":"assets/game_fruit_purple_l.png","../assets/game_fruit_purple_r.png":"assets/game_fruit_purple_r.png","../assets/game_fruit_red.png":"assets/game_fruit_red.png","../assets/game_fruit_red_s.png":"assets/game_fruit_red_s.png","../assets/game_fruit_red_l.png":"assets/game_fruit_red_l.png","../assets/game_fruit_red_r.png":"assets/game_fruit_red_r.png","../assets/game_fruit_yellow.png":"assets/game_fruit_yellow.png","../assets/game_fruit_yellow_s.png":"assets/game_fruit_yellow_s.png","../assets/game_fruit_yellow_l.png":"assets/game_fruit_yellow_l.png","../assets/game_fruit_yellow_r.png":"assets/game_fruit_yellow_r.png"}],"src/fruits.js":[function(require,module,exports) {
+
+var random = function random(max) {
+  var min = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  return min + (max - min) * Math.random();
+};
+
+exports.random = random;
+},{"../assets/game_fruit_blue.png":"assets/game_fruit_blue.png","../assets/game_fruit_blue_s.png":"assets/game_fruit_blue_s.png","../assets/game_fruit_blue_l.png":"assets/game_fruit_blue_l.png","../assets/game_fruit_blue_r.png":"assets/game_fruit_blue_r.png","../assets/game_fruit_green.png":"assets/game_fruit_green.png","../assets/game_fruit_green_s.png":"assets/game_fruit_green_s.png","../assets/game_fruit_green_l.png":"assets/game_fruit_green_l.png","../assets/game_fruit_green_r.png":"assets/game_fruit_green_r.png","../assets/game_fruit_orange.png":"assets/game_fruit_orange.png","../assets/game_fruit_orange_s.png":"assets/game_fruit_orange_s.png","../assets/game_fruit_orange_l.png":"assets/game_fruit_orange_l.png","../assets/game_fruit_orange_r.png":"assets/game_fruit_orange_r.png","../assets/game_fruit_purple.png":"assets/game_fruit_purple.png","../assets/game_fruit_purple_s.png":"assets/game_fruit_purple_s.png","../assets/game_fruit_purple_l.png":"assets/game_fruit_purple_l.png","../assets/game_fruit_purple_r.png":"assets/game_fruit_purple_r.png","../assets/game_fruit_red.png":"assets/game_fruit_red.png","../assets/game_fruit_red_s.png":"assets/game_fruit_red_s.png","../assets/game_fruit_red_l.png":"assets/game_fruit_red_l.png","../assets/game_fruit_red_r.png":"assets/game_fruit_red_r.png","../assets/game_fruit_yellow.png":"assets/game_fruit_yellow.png","../assets/game_fruit_yellow_s.png":"assets/game_fruit_yellow_s.png","../assets/game_fruit_yellow_l.png":"assets/game_fruit_yellow_l.png","../assets/game_fruit_yellow_r.png":"assets/game_fruit_yellow_r.png"}],"src/fruit-sliced.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.FruitSliced = void 0;
+
+var _simpleEntity = require("./simple-entity");
+
+var _helpers = require("../helpers");
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var FruitSliced =
+/*#__PURE__*/
+function () {
+  function FruitSliced(x, y, leftPart, rightPart) {
+    _classCallCheck(this, FruitSliced);
+
+    this.leftPart = leftPart;
+    this.rightPart = rightPart;
+    this.container = new createjs.Container();
+    this.container.x = x;
+    this.container.y = y;
+  }
+
+  _createClass(FruitSliced, [{
+    key: "init",
+    value: function init() {
+      var leftSlice = new _simpleEntity.SimpleEntity(this.container.x - 250, this.container.y - 250, this.leftPart);
+      this.container.addChild(leftSlice.bitmap);
+      var rightSlice = new _simpleEntity.SimpleEntity(this.container.x - 150, this.container.y - 250, this.rightPart);
+      this.container.addChild(rightSlice.bitmap);
+      this.animate(leftSlice);
+      this.animate(rightSlice);
+    }
+  }, {
+    key: "animate",
+    value: function animate(slice) {
+      var _this = this;
+
+      createjs.Tween.get(slice.bitmap).to({
+        y: slice.bitmap.y - (0, _helpers.random)(50)
+      }, 200).wait(30).to({
+        rotation: (0, _helpers.random)(200),
+        x: window.innerWidth / (0, _helpers.random)(6, 1.1),
+        y: window.innerHeight * 1.2
+      }, 2100).call(function () {
+        _this.container.removeChild(slice.bitmap);
+      });
+    }
+  }]);
+
+  return FruitSliced;
+}();
+
+exports.FruitSliced = FruitSliced;
+},{"./simple-entity":"src/simple-entity.js","../helpers":"helpers/index.js"}],"src/fruits.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -372,7 +407,7 @@ var _simpleEntity = require("./simple-entity");
 
 var _fruitSliced = require("./fruit-sliced");
 
-var _helper = require("../helper");
+var _helpers = require("../helpers");
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -380,13 +415,8 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var random = function random(max) {
-  var min = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-  return min + (max - min) * Math.random();
-};
-
 var randomFruit = function randomFruit() {
-  return Math.floor(random(6));
+  return Math.floor((0, _helpers.random)(6));
 };
 
 var Fruits =
@@ -400,8 +430,8 @@ function () {
   }
 
   _createClass(Fruits, [{
-    key: "launch",
-    value: function launch() {
+    key: "start",
+    value: function start() {
       var _this = this;
 
       setInterval(function () {
@@ -418,7 +448,7 @@ function () {
     key: "createFruit",
     value: function createFruit() {
       var randomFruitId = randomFruit();
-      var fruit = new _fruit.Fruit(random(window.innerWidth), window.innerHeight, _helper.fruits[randomFruitId][0], randomFruitId);
+      var fruit = new _fruit.Fruit((0, _helpers.random)(window.innerWidth), window.innerHeight, _helpers.fruits[randomFruitId][0], randomFruitId);
       fruit.bitmap.addEventListener('mousedown', this.fruitOnCLick.bind(this, fruit));
       this.container.addChild(fruit.bitmap);
       return fruit;
@@ -427,20 +457,21 @@ function () {
     key: "fruitOnCLick",
     value: function fruitOnCLick(fruit) {
       this.removeFruit(fruit.bitmap);
-      window.points += Math.ceil(random(29, 4));
+      window.points += Math.ceil((0, _helpers.random)(29, 4));
       this.addFruitSplash(fruit);
       this.addSlicedFruit(fruit);
     }
   }, {
     key: "addSlicedFruit",
     value: function addSlicedFruit(fruit) {
-      var fruitSliced = new _fruitSliced.FruitSliced(fruit.bitmap.x - 100, fruit.bitmap.y - 60, _helper.fruits[fruit.randomId][2]);
-      this.container.addChild(fruitSliced.bitmap);
+      var fruitSliced = new _fruitSliced.FruitSliced(fruit.bitmap.x, fruit.bitmap.y, _helpers.fruits[fruit.randomId][2], _helpers.fruits[fruit.randomId][3]);
+      this.container.addChild(fruitSliced.container);
+      fruitSliced.init();
     }
   }, {
     key: "addFruitSplash",
     value: function addFruitSplash(fruit) {
-      var fruitSplash = new _simpleEntity.SimpleEntity(fruit.bitmap.x - 100, fruit.bitmap.y - 60, _helper.fruits[fruit.randomId][1]);
+      var fruitSplash = new _simpleEntity.SimpleEntity(fruit.bitmap.x - 100, fruit.bitmap.y - 60, _helpers.fruits[fruit.randomId][1]);
       this.container.addChild(fruitSplash.bitmap);
     }
   }, {
@@ -454,12 +485,12 @@ function () {
       var _this2 = this;
 
       createjs.Tween.get(fruit.bitmap).to({
-        rotation: random(200),
-        x: random(40, window.innerWidth - 40),
-        y: random(window.innerHeight * 0.1, 30)
+        rotation: (0, _helpers.random)(200),
+        x: (0, _helpers.random)(40, window.innerWidth - 40),
+        y: (0, _helpers.random)(window.innerHeight * 0.1, 30)
       }, 2100).wait(40).to({
-        rotation: random(200),
-        x: window.innerWidth / random(6, 1.1),
+        rotation: (0, _helpers.random)(200),
+        x: window.innerWidth / (0, _helpers.random)(6, 1.1),
         y: window.innerHeight * 1.2
       }, 2100).call(function () {
         _this2.removeFruit(fruit.bitmap);
@@ -471,7 +502,7 @@ function () {
 }();
 
 exports.Fruits = Fruits;
-},{"./fruit":"src/fruit.js","./simple-entity":"src/simple-entity.js","./fruit-sliced":"src/fruit-sliced.js","../helper":"helper/index.js"}],"src/result-text.js":[function(require,module,exports) {
+},{"./fruit":"src/fruit.js","./simple-entity":"src/simple-entity.js","./fruit-sliced":"src/fruit-sliced.js","../helpers":"helpers/index.js"}],"src/result-text.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -614,7 +645,7 @@ function () {
       this.stage.removeChild(this.play.bitmap);
       this.fruits = new _fruits.Fruits();
       this.stage.addChild(this.fruits.container);
-      this.fruits.launch();
+      this.fruits.start();
       this.gameData = new _gameData.GameData();
       this.stage.addChild(this.gameData.container);
       this.gameData.init();
@@ -666,7 +697,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40577" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44095" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

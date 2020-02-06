@@ -32,7 +32,7 @@ class Sketch {
 
     this.fruits = new Fruits();
     this.stage.addChild(this.fruits.container);
-    this.fruits.launch();
+    this.fruits.start();
 
     this.gameData = new GameData();
     this.stage.addChild(this.gameData.container);

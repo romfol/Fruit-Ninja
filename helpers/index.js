@@ -61,3 +61,5 @@ export const fruits = [
    yellowFruitRight
   ]
 ];
+
+export const random = (max, min = 0) => min + (max - min) * Math.random();
