@@ -220,26 +220,50 @@ exports.FruitSplash = FruitSplash;
 module.exports = "/game_fruit_blue.a68da932.png";
 },{}],"assets/game_fruit_blue_s.png":[function(require,module,exports) {
 module.exports = "/game_fruit_blue_s.30143d5f.png";
+},{}],"assets/game_fruit_blue_l.png":[function(require,module,exports) {
+module.exports = "/game_fruit_blue_l.1fcde41d.png";
+},{}],"assets/game_fruit_blue_r.png":[function(require,module,exports) {
+module.exports = "/game_fruit_blue_r.d5e37d19.png";
 },{}],"assets/game_fruit_green.png":[function(require,module,exports) {
 module.exports = "/game_fruit_green.f72d42b1.png";
 },{}],"assets/game_fruit_green_s.png":[function(require,module,exports) {
 module.exports = "/game_fruit_green_s.9232c482.png";
+},{}],"assets/game_fruit_green_l.png":[function(require,module,exports) {
+module.exports = "/game_fruit_green_l.0f702726.png";
+},{}],"assets/game_fruit_green_r.png":[function(require,module,exports) {
+module.exports = "/game_fruit_green_r.935fd146.png";
 },{}],"assets/game_fruit_orange.png":[function(require,module,exports) {
 module.exports = "/game_fruit_orange.4296c84b.png";
 },{}],"assets/game_fruit_orange_s.png":[function(require,module,exports) {
 module.exports = "/game_fruit_orange_s.1e0a8c88.png";
+},{}],"assets/game_fruit_orange_l.png":[function(require,module,exports) {
+module.exports = "/game_fruit_orange_l.0d238433.png";
+},{}],"assets/game_fruit_orange_r.png":[function(require,module,exports) {
+module.exports = "/game_fruit_orange_r.752b8ea6.png";
 },{}],"assets/game_fruit_purple.png":[function(require,module,exports) {
 module.exports = "/game_fruit_purple.d699916d.png";
 },{}],"assets/game_fruit_purple_s.png":[function(require,module,exports) {
 module.exports = "/game_fruit_purple_s.69c46ad7.png";
+},{}],"assets/game_fruit_purple_l.png":[function(require,module,exports) {
+module.exports = "/game_fruit_purple_l.b4848c21.png";
+},{}],"assets/game_fruit_purple_r.png":[function(require,module,exports) {
+module.exports = "/game_fruit_purple_r.c6ec2b2e.png";
 },{}],"assets/game_fruit_red.png":[function(require,module,exports) {
 module.exports = "/game_fruit_red.96068379.png";
 },{}],"assets/game_fruit_red_s.png":[function(require,module,exports) {
 module.exports = "/game_fruit_red_s.b210ecfb.png";
+},{}],"assets/game_fruit_red_l.png":[function(require,module,exports) {
+module.exports = "/game_fruit_red_l.d5fd1448.png";
+},{}],"assets/game_fruit_red_r.png":[function(require,module,exports) {
+module.exports = "/game_fruit_red_r.cff09886.png";
 },{}],"assets/game_fruit_yellow.png":[function(require,module,exports) {
 module.exports = "/game_fruit_yellow.437813a8.png";
 },{}],"assets/game_fruit_yellow_s.png":[function(require,module,exports) {
 module.exports = "/game_fruit_yellow_s.cd32b651.png";
+},{}],"assets/game_fruit_yellow_l.png":[function(require,module,exports) {
+module.exports = "/game_fruit_yellow_l.93d8fb4f.png";
+},{}],"assets/game_fruit_yellow_r.png":[function(require,module,exports) {
+module.exports = "/game_fruit_yellow_r.a5c8387a.png";
 },{}],"fruits.js":[function(require,module,exports) {
 "use strict";
 
@@ -256,25 +280,49 @@ var _game_fruit_blue = _interopRequireDefault(require("./assets/game_fruit_blue.
 
 var _game_fruit_blue_s = _interopRequireDefault(require("./assets/game_fruit_blue_s.png"));
 
+var _game_fruit_blue_l = _interopRequireDefault(require("./assets/game_fruit_blue_l.png"));
+
+var _game_fruit_blue_r = _interopRequireDefault(require("./assets/game_fruit_blue_r.png"));
+
 var _game_fruit_green = _interopRequireDefault(require("./assets/game_fruit_green.png"));
 
 var _game_fruit_green_s = _interopRequireDefault(require("./assets/game_fruit_green_s.png"));
+
+var _game_fruit_green_l = _interopRequireDefault(require("./assets/game_fruit_green_l.png"));
+
+var _game_fruit_green_r = _interopRequireDefault(require("./assets/game_fruit_green_r.png"));
 
 var _game_fruit_orange = _interopRequireDefault(require("./assets/game_fruit_orange.png"));
 
 var _game_fruit_orange_s = _interopRequireDefault(require("./assets/game_fruit_orange_s.png"));
 
+var _game_fruit_orange_l = _interopRequireDefault(require("./assets/game_fruit_orange_l.png"));
+
+var _game_fruit_orange_r = _interopRequireDefault(require("./assets/game_fruit_orange_r.png"));
+
 var _game_fruit_purple = _interopRequireDefault(require("./assets/game_fruit_purple.png"));
 
 var _game_fruit_purple_s = _interopRequireDefault(require("./assets/game_fruit_purple_s.png"));
+
+var _game_fruit_purple_l = _interopRequireDefault(require("./assets/game_fruit_purple_l.png"));
+
+var _game_fruit_purple_r = _interopRequireDefault(require("./assets/game_fruit_purple_r.png"));
 
 var _game_fruit_red = _interopRequireDefault(require("./assets/game_fruit_red.png"));
 
 var _game_fruit_red_s = _interopRequireDefault(require("./assets/game_fruit_red_s.png"));
 
+var _game_fruit_red_l = _interopRequireDefault(require("./assets/game_fruit_red_l.png"));
+
+var _game_fruit_red_r = _interopRequireDefault(require("./assets/game_fruit_red_r.png"));
+
 var _game_fruit_yellow = _interopRequireDefault(require("./assets/game_fruit_yellow.png"));
 
 var _game_fruit_yellow_s = _interopRequireDefault(require("./assets/game_fruit_yellow_s.png"));
+
+var _game_fruit_yellow_l = _interopRequireDefault(require("./assets/game_fruit_yellow_l.png"));
+
+var _game_fruit_yellow_r = _interopRequireDefault(require("./assets/game_fruit_yellow_r.png"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -284,7 +332,7 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var fruits = [[_game_fruit_blue.default, _game_fruit_blue_s.default], [_game_fruit_green.default, _game_fruit_green_s.default], [_game_fruit_orange.default, _game_fruit_orange_s.default], [_game_fruit_purple.default, _game_fruit_purple_s.default], [_game_fruit_red.default, _game_fruit_red_s.default], [_game_fruit_yellow.default, _game_fruit_yellow_s.default]];
+var fruits = [[_game_fruit_blue.default, _game_fruit_blue_s.default, _game_fruit_blue_l.default, _game_fruit_blue_r.default], [_game_fruit_green.default, _game_fruit_green_s.default, _game_fruit_green_l.default, _game_fruit_green_r.default], [_game_fruit_orange.default, _game_fruit_orange_s.default, _game_fruit_orange_l.default, _game_fruit_orange_r.default], [_game_fruit_purple.default, _game_fruit_purple_s.default, _game_fruit_purple_l.default, _game_fruit_purple_r.default], [_game_fruit_red.default, _game_fruit_red_s.default, _game_fruit_red_l.default, _game_fruit_red_r.default], [_game_fruit_yellow.default, _game_fruit_yellow_s.default, _game_fruit_yellow_l.default, _game_fruit_yellow_r.default]];
 
 var random = function random(max) {
   var min = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
@@ -323,13 +371,9 @@ function () {
   }, {
     key: "createFruit",
     value: function createFruit() {
-      var _this2 = this;
-
       var randomFruitId = randomFruit();
       var fruit = new _fruit.Fruit(random(window.innerWidth), window.innerHeight, fruits[randomFruitId][0], randomFruitId);
-      fruit.bitmap.addEventListener('mousedown', function () {
-        return _this2.fruitOnCLick(fruit);
-      });
+      fruit.bitmap.addEventListener('mousedown', this.fruitOnCLick.bind(this, fruit));
       this.container.addChild(fruit.bitmap);
       return fruit;
     }
@@ -339,6 +383,12 @@ function () {
       this.removeFruit(fruit.bitmap);
       window.points += Math.ceil(random(29, 4));
       this.addFruitSplash(fruit);
+      this.addSlicedFruit(fruit);
+    }
+  }, {
+    key: "addSlicedFruit",
+    value: function addSlicedFruit(fruit) {
+      console.log(fruit);
     }
   }, {
     key: "addFruitSplash",
@@ -354,7 +404,7 @@ function () {
   }, {
     key: "launchFruit",
     value: function launchFruit(fruit) {
-      var _this3 = this;
+      var _this2 = this;
 
       createjs.Tween.get(fruit.bitmap).to({
         rotation: random(200),
@@ -365,7 +415,7 @@ function () {
         x: window.innerWidth / random(6, 1.1),
         y: window.innerHeight * 1.2
       }, 2100).call(function () {
-        _this3.removeFruit(fruit.bitmap);
+        _this2.removeFruit(fruit.bitmap);
       });
     }
   }]);
@@ -374,7 +424,7 @@ function () {
 }();
 
 exports.Fruits = Fruits;
-},{"./fruit":"fruit.js","./fruit-splash":"fruit-splash.js","./assets/game_fruit_blue.png":"assets/game_fruit_blue.png","./assets/game_fruit_blue_s.png":"assets/game_fruit_blue_s.png","./assets/game_fruit_green.png":"assets/game_fruit_green.png","./assets/game_fruit_green_s.png":"assets/game_fruit_green_s.png","./assets/game_fruit_orange.png":"assets/game_fruit_orange.png","./assets/game_fruit_orange_s.png":"assets/game_fruit_orange_s.png","./assets/game_fruit_purple.png":"assets/game_fruit_purple.png","./assets/game_fruit_purple_s.png":"assets/game_fruit_purple_s.png","./assets/game_fruit_red.png":"assets/game_fruit_red.png","./assets/game_fruit_red_s.png":"assets/game_fruit_red_s.png","./assets/game_fruit_yellow.png":"assets/game_fruit_yellow.png","./assets/game_fruit_yellow_s.png":"assets/game_fruit_yellow_s.png"}],"result-text.js":[function(require,module,exports) {
+},{"./fruit":"fruit.js","./fruit-splash":"fruit-splash.js","./assets/game_fruit_blue.png":"assets/game_fruit_blue.png","./assets/game_fruit_blue_s.png":"assets/game_fruit_blue_s.png","./assets/game_fruit_blue_l.png":"assets/game_fruit_blue_l.png","./assets/game_fruit_blue_r.png":"assets/game_fruit_blue_r.png","./assets/game_fruit_green.png":"assets/game_fruit_green.png","./assets/game_fruit_green_s.png":"assets/game_fruit_green_s.png","./assets/game_fruit_green_l.png":"assets/game_fruit_green_l.png","./assets/game_fruit_green_r.png":"assets/game_fruit_green_r.png","./assets/game_fruit_orange.png":"assets/game_fruit_orange.png","./assets/game_fruit_orange_s.png":"assets/game_fruit_orange_s.png","./assets/game_fruit_orange_l.png":"assets/game_fruit_orange_l.png","./assets/game_fruit_orange_r.png":"assets/game_fruit_orange_r.png","./assets/game_fruit_purple.png":"assets/game_fruit_purple.png","./assets/game_fruit_purple_s.png":"assets/game_fruit_purple_s.png","./assets/game_fruit_purple_l.png":"assets/game_fruit_purple_l.png","./assets/game_fruit_purple_r.png":"assets/game_fruit_purple_r.png","./assets/game_fruit_red.png":"assets/game_fruit_red.png","./assets/game_fruit_red_s.png":"assets/game_fruit_red_s.png","./assets/game_fruit_red_l.png":"assets/game_fruit_red_l.png","./assets/game_fruit_red_r.png":"assets/game_fruit_red_r.png","./assets/game_fruit_yellow.png":"assets/game_fruit_yellow.png","./assets/game_fruit_yellow_s.png":"assets/game_fruit_yellow_s.png","./assets/game_fruit_yellow_l.png":"assets/game_fruit_yellow_l.png","./assets/game_fruit_yellow_r.png":"assets/game_fruit_yellow_r.png"}],"result-text.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
