@@ -1,4 +1,4 @@
-import button from './assets/play-btn.png'
+import button from '../assets/play-btn.png'
 
 export class PlayButton {
     constructor(x, y) {

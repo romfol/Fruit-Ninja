@@ -119,7 +119,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   return newRequire;
 })({"assets/game_bg.jpg":[function(require,module,exports) {
 module.exports = "/game_bg.836ae9aa.jpg";
-},{}],"background.js":[function(require,module,exports) {
+},{}],"src/background.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -127,7 +127,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Background = void 0;
 
-var _game_bg = _interopRequireDefault(require("./assets/game_bg.jpg"));
+var _game_bg = _interopRequireDefault(require("../assets/game_bg.jpg"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -142,9 +142,9 @@ var Background = function Background() {
 };
 
 exports.Background = Background;
-},{"./assets/game_bg.jpg":"assets/game_bg.jpg"}],"assets/play-btn.png":[function(require,module,exports) {
+},{"../assets/game_bg.jpg":"assets/game_bg.jpg"}],"assets/play-btn.png":[function(require,module,exports) {
 module.exports = "/play-btn.77cb7971.png";
-},{}],"play-button.js":[function(require,module,exports) {
+},{}],"src/play-button.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -152,7 +152,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.PlayButton = void 0;
 
-var _playBtn = _interopRequireDefault(require("./assets/play-btn.png"));
+var _playBtn = _interopRequireDefault(require("../assets/play-btn.png"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -169,7 +169,7 @@ var PlayButton = function PlayButton(x, y) {
 };
 
 exports.PlayButton = PlayButton;
-},{"./assets/play-btn.png":"assets/play-btn.png"}],"fruit.js":[function(require,module,exports) {
+},{"../assets/play-btn.png":"assets/play-btn.png"}],"src/fruit.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -193,21 +193,21 @@ var Fruit = function Fruit(x, y, fruit, randomId) {
 };
 
 exports.Fruit = Fruit;
-},{}],"fruit-splash.js":[function(require,module,exports) {
+},{}],"src/simple-entity.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.FruitSplash = void 0;
+exports.SimpleEntity = void 0;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var FruitSplash = function FruitSplash(x, y, splashedFruit) {
-  _classCallCheck(this, FruitSplash);
+var SimpleEntity = function SimpleEntity(x, y, entity) {
+  _classCallCheck(this, SimpleEntity);
 
   this.image = new Image();
-  this.image.src = splashedFruit;
+  this.image.src = entity;
   this.bitmap = new createjs.Bitmap(this.image);
   this.bitmap.x = x;
   this.bitmap.y = y;
@@ -215,7 +215,41 @@ var FruitSplash = function FruitSplash(x, y, splashedFruit) {
   this.bitmap.scaleY = 0.5;
 };
 
-exports.FruitSplash = FruitSplash;
+exports.SimpleEntity = SimpleEntity;
+},{}],"src/fruit-sliced.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.FruitSliced = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var FruitSliced =
+/*#__PURE__*/
+function () {
+  function FruitSliced(x, y, leftPart, rightPart) {
+    _classCallCheck(this, FruitSliced);
+
+    this.leftPart = leftPart;
+    this.rightPart = rightPart;
+    this.container = new createjs.Container();
+  }
+
+  _createClass(FruitSliced, [{
+    key: "launch",
+    value: function launch() {}
+  }]);
+
+  return FruitSliced;
+}();
+
+exports.FruitSliced = FruitSliced;
 },{}],"assets/game_fruit_blue.png":[function(require,module,exports) {
 module.exports = "/game_fruit_blue.a68da932.png";
 },{}],"assets/game_fruit_blue_s.png":[function(require,module,exports) {
@@ -324,7 +358,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var fruits = [[_game_fruit_blue.default, _game_fruit_blue_s.default, _game_fruit_blue_l.default, _game_fruit_blue_r.default], [_game_fruit_green.default, _game_fruit_green_s.default, _game_fruit_green_l.default, _game_fruit_green_r.default], [_game_fruit_orange.default, _game_fruit_orange_s.default, _game_fruit_orange_l.default, _game_fruit_orange_r.default], [_game_fruit_purple.default, _game_fruit_purple_s.default, _game_fruit_purple_l.default, _game_fruit_purple_r.default], [_game_fruit_red.default, _game_fruit_red_s.default, _game_fruit_red_l.default, _game_fruit_red_r.default], [_game_fruit_yellow.default, _game_fruit_yellow_s.default, _game_fruit_yellow_l.default, _game_fruit_yellow_r.default]];
 exports.fruits = fruits;
-},{"../assets/game_fruit_blue.png":"assets/game_fruit_blue.png","../assets/game_fruit_blue_s.png":"assets/game_fruit_blue_s.png","../assets/game_fruit_blue_l.png":"assets/game_fruit_blue_l.png","../assets/game_fruit_blue_r.png":"assets/game_fruit_blue_r.png","../assets/game_fruit_green.png":"assets/game_fruit_green.png","../assets/game_fruit_green_s.png":"assets/game_fruit_green_s.png","../assets/game_fruit_green_l.png":"assets/game_fruit_green_l.png","../assets/game_fruit_green_r.png":"assets/game_fruit_green_r.png","../assets/game_fruit_orange.png":"assets/game_fruit_orange.png","../assets/game_fruit_orange_s.png":"assets/game_fruit_orange_s.png","../assets/game_fruit_orange_l.png":"assets/game_fruit_orange_l.png","../assets/game_fruit_orange_r.png":"assets/game_fruit_orange_r.png","../assets/game_fruit_purple.png":"assets/game_fruit_purple.png","../assets/game_fruit_purple_s.png":"assets/game_fruit_purple_s.png","../assets/game_fruit_purple_l.png":"assets/game_fruit_purple_l.png","../assets/game_fruit_purple_r.png":"assets/game_fruit_purple_r.png","../assets/game_fruit_red.png":"assets/game_fruit_red.png","../assets/game_fruit_red_s.png":"assets/game_fruit_red_s.png","../assets/game_fruit_red_l.png":"assets/game_fruit_red_l.png","../assets/game_fruit_red_r.png":"assets/game_fruit_red_r.png","../assets/game_fruit_yellow.png":"assets/game_fruit_yellow.png","../assets/game_fruit_yellow_s.png":"assets/game_fruit_yellow_s.png","../assets/game_fruit_yellow_l.png":"assets/game_fruit_yellow_l.png","../assets/game_fruit_yellow_r.png":"assets/game_fruit_yellow_r.png"}],"fruits.js":[function(require,module,exports) {
+},{"../assets/game_fruit_blue.png":"assets/game_fruit_blue.png","../assets/game_fruit_blue_s.png":"assets/game_fruit_blue_s.png","../assets/game_fruit_blue_l.png":"assets/game_fruit_blue_l.png","../assets/game_fruit_blue_r.png":"assets/game_fruit_blue_r.png","../assets/game_fruit_green.png":"assets/game_fruit_green.png","../assets/game_fruit_green_s.png":"assets/game_fruit_green_s.png","../assets/game_fruit_green_l.png":"assets/game_fruit_green_l.png","../assets/game_fruit_green_r.png":"assets/game_fruit_green_r.png","../assets/game_fruit_orange.png":"assets/game_fruit_orange.png","../assets/game_fruit_orange_s.png":"assets/game_fruit_orange_s.png","../assets/game_fruit_orange_l.png":"assets/game_fruit_orange_l.png","../assets/game_fruit_orange_r.png":"assets/game_fruit_orange_r.png","../assets/game_fruit_purple.png":"assets/game_fruit_purple.png","../assets/game_fruit_purple_s.png":"assets/game_fruit_purple_s.png","../assets/game_fruit_purple_l.png":"assets/game_fruit_purple_l.png","../assets/game_fruit_purple_r.png":"assets/game_fruit_purple_r.png","../assets/game_fruit_red.png":"assets/game_fruit_red.png","../assets/game_fruit_red_s.png":"assets/game_fruit_red_s.png","../assets/game_fruit_red_l.png":"assets/game_fruit_red_l.png","../assets/game_fruit_red_r.png":"assets/game_fruit_red_r.png","../assets/game_fruit_yellow.png":"assets/game_fruit_yellow.png","../assets/game_fruit_yellow_s.png":"assets/game_fruit_yellow_s.png","../assets/game_fruit_yellow_l.png":"assets/game_fruit_yellow_l.png","../assets/game_fruit_yellow_r.png":"assets/game_fruit_yellow_r.png"}],"src/fruits.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -334,9 +368,11 @@ exports.Fruits = void 0;
 
 var _fruit = require("./fruit");
 
-var _fruitSplash = require("./fruit-splash");
+var _simpleEntity = require("./simple-entity");
 
-var _helper = require("./helper");
+var _fruitSliced = require("./fruit-sliced");
+
+var _helper = require("../helper");
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -398,12 +434,13 @@ function () {
   }, {
     key: "addSlicedFruit",
     value: function addSlicedFruit(fruit) {
-      console.log(fruit);
+      var fruitSliced = new _fruitSliced.FruitSliced(fruit.bitmap.x - 100, fruit.bitmap.y - 60, _helper.fruits[fruit.randomId][2]);
+      this.container.addChild(fruitSliced.bitmap);
     }
   }, {
     key: "addFruitSplash",
     value: function addFruitSplash(fruit) {
-      var fruitSplash = new _fruitSplash.FruitSplash(fruit.bitmap.x - 100, fruit.bitmap.y - 60, _helper.fruits[fruit.randomId][1]);
+      var fruitSplash = new _simpleEntity.SimpleEntity(fruit.bitmap.x - 100, fruit.bitmap.y - 60, _helper.fruits[fruit.randomId][1]);
       this.container.addChild(fruitSplash.bitmap);
     }
   }, {
@@ -434,7 +471,7 @@ function () {
 }();
 
 exports.Fruits = Fruits;
-},{"./fruit":"fruit.js","./fruit-splash":"fruit-splash.js","./helper":"helper/index.js"}],"result-text.js":[function(require,module,exports) {
+},{"./fruit":"src/fruit.js","./simple-entity":"src/simple-entity.js","./fruit-sliced":"src/fruit-sliced.js","../helper":"helper/index.js"}],"src/result-text.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -453,7 +490,7 @@ var ResultText = function ResultText(score, x, y) {
 };
 
 exports.ResultText = ResultText;
-},{}],"timer.js":[function(require,module,exports) {
+},{}],"src/timer.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -472,7 +509,7 @@ var Timer = function Timer() {
 };
 
 exports.Timer = Timer;
-},{}],"game-data.js":[function(require,module,exports) {
+},{}],"src/game-data.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -524,18 +561,18 @@ function () {
 }();
 
 exports.GameData = GameData;
-},{"./timer":"timer.js","./result-text":"result-text.js"}],"app.js":[function(require,module,exports) {
+},{"./timer":"src/timer.js","./result-text":"src/result-text.js"}],"app.js":[function(require,module,exports) {
 "use strict";
 
-var _background = require("./background");
+var _background = require("./src/background");
 
-var _playButton = require("./play-button");
+var _playButton = require("./src/play-button");
 
-var _fruits = require("./fruits");
+var _fruits = require("./src/fruits");
 
-var _resultText = require("./result-text");
+var _resultText = require("./src/result-text");
 
-var _gameData = require("./game-data");
+var _gameData = require("./src/game-data");
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -601,7 +638,7 @@ function () {
 }();
 
 var app = new Sketch();
-},{"./background":"background.js","./play-button":"play-button.js","./fruits":"fruits.js","./result-text":"result-text.js","./game-data":"game-data.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./src/background":"src/background.js","./src/play-button":"src/play-button.js","./src/fruits":"src/fruits.js","./src/result-text":"src/result-text.js","./src/game-data":"src/game-data.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -629,7 +666,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43697" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40577" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

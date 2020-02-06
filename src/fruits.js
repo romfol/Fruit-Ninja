@@ -1,6 +1,7 @@
 import { Fruit } from './fruit';
-import { FruitSplash } from './fruit-splash';
-import { fruits } from './helper';
+import { SimpleEntity } from './simple-entity';
+import { FruitSliced } from './fruit-sliced';
+import { fruits } from '../helper';
 
 const random = (max, min = 0) => min + (max - min) * Math.random();
 
@@ -40,11 +41,12 @@ export class Fruits {
   }
 
   addSlicedFruit(fruit) {
-    console.log(fruit);
+    const fruitSliced = new FruitSliced(fruit.bitmap.x - 100, fruit.bitmap.y - 60, fruits[fruit.randomId][2]);
+    this.container.addChild(fruitSliced.bitmap);
   }
 
   addFruitSplash(fruit) {
-    const fruitSplash = new FruitSplash(fruit.bitmap.x - 100, fruit.bitmap.y - 60, fruits[fruit.randomId][1]);
+    const fruitSplash = new SimpleEntity(fruit.bitmap.x - 100, fruit.bitmap.y - 60, fruits[fruit.randomId][1]);
     this.container.addChild(fruitSplash.bitmap);
   }
 

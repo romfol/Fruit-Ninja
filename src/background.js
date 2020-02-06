@@ -1,4 +1,4 @@
-import background from './assets/game_bg.jpg';
+import background from '../assets/game_bg.jpg';
 
 export class Background {
     constructor() {

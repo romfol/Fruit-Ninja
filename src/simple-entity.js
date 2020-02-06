@@ -1,7 +1,7 @@
-export class FruitSplash {
-    constructor(x, y, splashedFruit) {
+export class SimpleEntity {
+    constructor(x, y, entity) {
         this.image = new Image();
-        this.image.src = splashedFruit;
+        this.image.src = entity;
 
         this.bitmap = new createjs.Bitmap(this.image);
         this.bitmap.x = x;

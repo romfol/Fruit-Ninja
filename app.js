@@ -1,8 +1,8 @@
-import { Background } from './background';
-import { PlayButton } from './play-button';
-import { Fruits } from './fruits';
-import { ResultText } from './result-text';
-import { GameData } from './game-data';
+import { Background } from './src/background';
+import { PlayButton } from './src/play-button';
+import { Fruits } from './src/fruits';
+import { ResultText } from './src/result-text';
+import { GameData } from './src/game-data';
 
 class Sketch {
   constructor() {
