@@ -1,6 +1,7 @@
 import { Fruit } from './fruit';
 import { SimpleEntity } from './simple-entity';
 import { FruitSliced } from './fruit-sliced';
+import { SplashedBackground } from './splashed-background';
 import { fruits, random } from '../helpers';
 
 const randomFruit = () => Math.floor(random(6));
@@ -12,6 +13,9 @@ export class Fruits {
   }
 
   start() {
+    this.splashedBackground = new SplashedBackground();
+    this.container.addChild(this.splashedBackground.container);
+
     setInterval(() => {
       this.createAndLaunch();
     }, 2000);
@@ -46,7 +50,7 @@ export class Fruits {
 
   addFruitSplash(fruit) {
     const fruitSplash = new SimpleEntity(fruit.bitmap.x - 100, fruit.bitmap.y - 60, fruits[fruit.randomId][1]);
-    this.container.addChild(fruitSplash.bitmap);
+    this.splashedBackground.container.addChild(fruitSplash.bitmap);
   }
 
   removeFruit(fruit) {
@@ -61,16 +65,16 @@ export class Fruits {
           x: random(40, window.innerWidth - 40),
           y: random(window.innerHeight * 0.1, 30),
         },
-        2100
+        1500
       )
       .wait(40)
       .to(
         {
           rotation: random(200),
-          x: window.innerWidth / random(6, 1.1),
-          y: window.innerHeight * 1.2,
+          x: window.innerWidth / random(6, 1),
+          y: window.innerHeight,
         },
-        2100
+        1500
       )
       .call(() => {
         this.removeFruit(fruit.bitmap);

@@ -34,10 +34,10 @@ export class FruitSliced {
     .to(
       {
         rotation: random(200),
-        x: window.innerWidth / random(6, 1.1),
-        y: window.innerHeight * 1.2,
+        x: slice.bitmap.x + random(50, -50),
+        y: window.innerHeight,
       },
-      2100
+      150000/slice.bitmap.y
     )
     .call(() => {
       this.container.removeChild(slice.bitmap);

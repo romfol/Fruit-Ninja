@@ -21,17 +21,13 @@ class Sketch {
 
     this.play = new PlayButton();
     this.stage.addChild(this.play.bitmap);
-    this.play.bitmap.addEventListener('click', this.scene2.bind(this));
+    this.play.bitmap.addEventListener('click', this.scene1.bind(this));
 
-    this.scene1();
-  }
-
-  scene1() {
     createjs.Ticker.setFPS(60);
     createjs.Ticker.addEventListener('tick', this.stage);
   }
 
-  scene2() {
+  scene1() {
     this.stage.removeChild(this.play.bitmap);
 
     this.fruits = new Fruits();
@@ -45,11 +41,11 @@ class Sketch {
     setTimeout(() => {
       this.stage.removeChild(this.fruits.container);
       this.stage.removeChild(this.gameData.container);
-      this.scene3();
+      this.scene2();
     }, 30000);
   }
 
-  scene3() {
+  scene2() {
     this.gameResult = new GameResult(window.points);
     this.stage.addChild(this.gameResult.text);
   }

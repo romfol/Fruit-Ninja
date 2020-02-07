@@ -383,9 +383,9 @@ function () {
         y: slice.bitmap.y - (0, _helpers.random)(50)
       }, 200).wait(30).to({
         rotation: (0, _helpers.random)(200),
-        x: window.innerWidth / (0, _helpers.random)(6, 1.1),
-        y: window.innerHeight * 1.2
-      }, 2100).call(function () {
+        x: slice.bitmap.x + (0, _helpers.random)(50, -50),
+        y: window.innerHeight
+      }, 150000 / slice.bitmap.y).call(function () {
         _this.container.removeChild(slice.bitmap);
       });
     }
@@ -395,7 +395,24 @@ function () {
 }();
 
 exports.FruitSliced = FruitSliced;
-},{"./simple-entity":"src/simple-entity.js","../helpers":"helpers/index.js"}],"src/fruits.js":[function(require,module,exports) {
+},{"./simple-entity":"src/simple-entity.js","../helpers":"helpers/index.js"}],"src/splashed-background.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.SplashedBackground = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var SplashedBackground = function SplashedBackground() {
+  _classCallCheck(this, SplashedBackground);
+
+  this.container = new createjs.Container();
+};
+
+exports.SplashedBackground = SplashedBackground;
+},{}],"src/fruits.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -408,6 +425,8 @@ var _fruit = require("./fruit");
 var _simpleEntity = require("./simple-entity");
 
 var _fruitSliced = require("./fruit-sliced");
+
+var _splashedBackground = require("./splashed-background");
 
 var _helpers = require("../helpers");
 
@@ -436,6 +455,8 @@ function () {
     value: function start() {
       var _this = this;
 
+      this.splashedBackground = new _splashedBackground.SplashedBackground();
+      this.container.addChild(this.splashedBackground.container);
       setInterval(function () {
         _this.createAndLaunch();
       }, 2000);
@@ -474,7 +495,7 @@ function () {
     key: "addFruitSplash",
     value: function addFruitSplash(fruit) {
       var fruitSplash = new _simpleEntity.SimpleEntity(fruit.bitmap.x - 100, fruit.bitmap.y - 60, _helpers.fruits[fruit.randomId][1]);
-      this.container.addChild(fruitSplash.bitmap);
+      this.splashedBackground.container.addChild(fruitSplash.bitmap);
     }
   }, {
     key: "removeFruit",
@@ -490,11 +511,11 @@ function () {
         rotation: (0, _helpers.random)(200),
         x: (0, _helpers.random)(40, window.innerWidth - 40),
         y: (0, _helpers.random)(window.innerHeight * 0.1, 30)
-      }, 2100).wait(40).to({
+      }, 1500).wait(40).to({
         rotation: (0, _helpers.random)(200),
-        x: window.innerWidth / (0, _helpers.random)(6, 1.1),
-        y: window.innerHeight * 1.2
-      }, 2100).call(function () {
+        x: window.innerWidth / (0, _helpers.random)(6, 1),
+        y: window.innerHeight
+      }, 1500).call(function () {
         _this2.removeFruit(fruit.bitmap);
       });
     }
@@ -504,7 +525,7 @@ function () {
 }();
 
 exports.Fruits = Fruits;
-},{"./fruit":"src/fruit.js","./simple-entity":"src/simple-entity.js","./fruit-sliced":"src/fruit-sliced.js","../helpers":"helpers/index.js"}],"src/game-result.js":[function(require,module,exports) {
+},{"./fruit":"src/fruit.js","./simple-entity":"src/simple-entity.js","./fruit-sliced":"src/fruit-sliced.js","./splashed-background":"src/splashed-background.js","../helpers":"helpers/index.js"}],"src/game-result.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -653,18 +674,13 @@ function () {
       this.stage.addChild(this.background.bitmap);
       this.play = new _playButton.PlayButton();
       this.stage.addChild(this.play.bitmap);
-      this.play.bitmap.addEventListener('click', this.scene2.bind(this));
-      this.scene1();
-    }
-  }, {
-    key: "scene1",
-    value: function scene1() {
+      this.play.bitmap.addEventListener('click', this.scene1.bind(this));
       createjs.Ticker.setFPS(60);
       createjs.Ticker.addEventListener('tick', this.stage);
     }
   }, {
-    key: "scene2",
-    value: function scene2() {
+    key: "scene1",
+    value: function scene1() {
       var _this = this;
 
       this.stage.removeChild(this.play.bitmap);
@@ -679,12 +695,12 @@ function () {
 
         _this.stage.removeChild(_this.gameData.container);
 
-        _this.scene3();
+        _this.scene2();
       }, 30000);
     }
   }, {
-    key: "scene3",
-    value: function scene3() {
+    key: "scene2",
+    value: function scene2() {
       this.gameResult = new _gameResult.GameResult(window.points);
       this.stage.addChild(this.gameResult.text);
     }
@@ -722,7 +738,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42829" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45623" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
