@@ -139,6 +139,9 @@ var Background = function Background() {
   this.image = new Image();
   this.image.src = _game_bg.default;
   this.bitmap = new createjs.Bitmap(this.image);
+  this.bitmap.scaleX = window.innerWidth / this.image.width;
+  this.bitmap.scaleY = window.innerHeight / this.image.height;
+  console.log(this.bitmap);
 };
 
 exports.Background = Background;
@@ -700,7 +703,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33329" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38209" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
