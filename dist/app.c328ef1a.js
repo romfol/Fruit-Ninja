@@ -141,7 +141,6 @@ var Background = function Background() {
   this.bitmap = new createjs.Bitmap(this.image);
   this.bitmap.scaleX = window.innerWidth / this.image.width;
   this.bitmap.scaleY = window.innerHeight / this.image.height;
-  console.log(this.bitmap);
 };
 
 exports.Background = Background;
@@ -161,14 +160,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var PlayButton = function PlayButton(x, y) {
+var PlayButton = function PlayButton() {
   _classCallCheck(this, PlayButton);
 
   this.image = new Image();
   this.image.src = _playBtn.default;
   this.bitmap = new createjs.Bitmap(this.image);
-  this.bitmap.x = x;
-  this.bitmap.y = y;
+  this.bitmap.x = (window.innerWidth - this.image.width) / 2;
+  this.bitmap.y = 20;
 };
 
 exports.PlayButton = PlayButton;
@@ -505,25 +504,26 @@ function () {
 }();
 
 exports.Fruits = Fruits;
-},{"./fruit":"src/fruit.js","./simple-entity":"src/simple-entity.js","./fruit-sliced":"src/fruit-sliced.js","../helpers":"helpers/index.js"}],"src/result-text.js":[function(require,module,exports) {
+},{"./fruit":"src/fruit.js","./simple-entity":"src/simple-entity.js","./fruit-sliced":"src/fruit-sliced.js","../helpers":"helpers/index.js"}],"src/game-result.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ResultText = void 0;
+exports.GameResult = void 0;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var ResultText = function ResultText(score, x, y) {
-  _classCallCheck(this, ResultText);
+var GameResult = function GameResult(score) {
+  _classCallCheck(this, GameResult);
 
   this.text = new createjs.Text("Total score: ".concat(score), "20px Arial", "white");
-  this.text.x = x;
-  this.text.y = y;
+  this.text.x = (window.innerWidth - 150) / 2;
+  this.text.y = window.innerHeight / 2;
+  ;
 };
 
-exports.ResultText = ResultText;
+exports.GameResult = GameResult;
 },{}],"src/timer.js":[function(require,module,exports) {
 "use strict";
 
@@ -543,6 +543,25 @@ var Timer = function Timer() {
 };
 
 exports.Timer = Timer;
+},{}],"src/result-text.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ResultText = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var ResultText = function ResultText(score, x, y) {
+  _classCallCheck(this, ResultText);
+
+  this.text = new createjs.Text("Total score: ".concat(score), "20px Arial", "white");
+  this.text.x = x;
+  this.text.y = y;
+};
+
+exports.ResultText = ResultText;
 },{}],"src/game-data.js":[function(require,module,exports) {
 "use strict";
 
@@ -573,7 +592,7 @@ function () {
   _createClass(GameData, [{
     key: "init",
     value: function init() {
-      this.timer = new _timer.Timer(this.time);
+      this.timer = new _timer.Timer();
       this.container.addChild(this.timer.timer);
       this.text = new _resultText.ResultText(window.points, window.innerWidth - 150, 20);
       this.container.addChild(this.text.text);
@@ -604,7 +623,7 @@ var _playButton = require("./src/play-button");
 
 var _fruits = require("./src/fruits");
 
-var _resultText = require("./src/result-text");
+var _gameResult = require("./src/game-result");
 
 var _gameData = require("./src/game-data");
 
@@ -632,7 +651,7 @@ function () {
     value: function addObjects() {
       this.background = new _background.Background();
       this.stage.addChild(this.background.bitmap);
-      this.play = new _playButton.PlayButton(50, 10);
+      this.play = new _playButton.PlayButton();
       this.stage.addChild(this.play.bitmap);
       this.play.bitmap.addEventListener('click', this.scene2.bind(this));
       this.scene1();
@@ -666,8 +685,8 @@ function () {
   }, {
     key: "scene3",
     value: function scene3() {
-      this.text = new _resultText.ResultText(window.points, window.innerWidth / 3, window.innerHeight / 3);
-      this.stage.addChild(this.text.text);
+      this.gameResult = new _gameResult.GameResult(window.points);
+      this.stage.addChild(this.gameResult.text);
     }
   }]);
 
@@ -675,7 +694,7 @@ function () {
 }();
 
 var app = new Sketch();
-},{"./src/background":"src/background.js","./src/play-button":"src/play-button.js","./src/fruits":"src/fruits.js","./src/result-text":"src/result-text.js","./src/game-data":"src/game-data.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./src/background":"src/background.js","./src/play-button":"src/play-button.js","./src/fruits":"src/fruits.js","./src/game-result":"src/game-result.js","./src/game-data":"src/game-data.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

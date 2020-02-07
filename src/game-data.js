@@ -7,7 +7,7 @@ export class GameData {
   }
 
   init() {
-    this.timer = new Timer(this.time);
+    this.timer = new Timer();
     this.container.addChild(this.timer.timer);
 
     this.text = new ResultText(window.points, window.innerWidth - 150, 20);

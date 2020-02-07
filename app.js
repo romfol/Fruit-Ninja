@@ -1,7 +1,7 @@
 import { Background } from './src/background';
 import { PlayButton } from './src/play-button';
 import { Fruits } from './src/fruits';
-import { ResultText } from './src/result-text';
+import { GameResult } from './src/game-result';
 import { GameData } from './src/game-data';
 
 class Sketch {
@@ -19,7 +19,7 @@ class Sketch {
     this.background = new Background();
     this.stage.addChild(this.background.bitmap);
 
-    this.play = new PlayButton(50, 10);
+    this.play = new PlayButton();
     this.stage.addChild(this.play.bitmap);
     this.play.bitmap.addEventListener('click', this.scene2.bind(this));
 
@@ -50,8 +50,8 @@ class Sketch {
   }
 
   scene3() {
-    this.text = new ResultText(window.points, window.innerWidth / 3, window.innerHeight / 3);
-    this.stage.addChild(this.text.text);
+    this.gameResult = new GameResult(window.points);
+    this.stage.addChild(this.gameResult.text);
   }
 }
 
