@@ -360,16 +360,16 @@ function () {
     this.leftPart = leftPart;
     this.rightPart = rightPart;
     this.container = new createjs.Container();
-    this.container.x = x;
-    this.container.y = y;
+    this.fruitX = x;
+    this.fruitY = y;
   }
 
   _createClass(FruitSliced, [{
     key: "init",
     value: function init() {
-      var leftSlice = new _simpleEntity.SimpleEntity(this.container.x - 250, this.container.y - 250, this.leftPart);
+      var leftSlice = new _simpleEntity.SimpleEntity(this.fruitX - 40, this.fruitY, this.leftPart);
       this.container.addChild(leftSlice.bitmap);
-      var rightSlice = new _simpleEntity.SimpleEntity(this.container.x - 150, this.container.y - 250, this.rightPart);
+      var rightSlice = new _simpleEntity.SimpleEntity(this.fruitX + 40, this.fruitY, this.rightPart);
       this.container.addChild(rightSlice.bitmap);
       this.animate(leftSlice);
       this.animate(rightSlice);
@@ -518,7 +518,7 @@ var GameResult = function GameResult(score) {
   _classCallCheck(this, GameResult);
 
   this.text = new createjs.Text("Total score: ".concat(score), "20px Arial", "white");
-  this.text.x = (window.innerWidth - 150) / 2;
+  this.text.x = (window.innerWidth - 130) / 2;
   this.text.y = window.innerHeight / 2;
   ;
 };
@@ -722,7 +722,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38209" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42829" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

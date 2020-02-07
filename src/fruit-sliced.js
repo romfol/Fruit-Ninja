@@ -6,15 +6,16 @@ export class FruitSliced {
     this.leftPart = leftPart;
     this.rightPart = rightPart;
     this.container = new createjs.Container();
-    this.container.x = x;
-    this.container.y = y;
+
+    this.fruitX = x;
+    this.fruitY = y;
   }
 
   init() {
-    const leftSlice = new SimpleEntity(this.container.x - 250, this.container.y - 250, this.leftPart);
+    const leftSlice = new SimpleEntity(this.fruitX - 40, this.fruitY , this.leftPart);
     this.container.addChild(leftSlice.bitmap);
 
-    const rightSlice = new SimpleEntity(this.container.x - 150, this.container.y -250, this.rightPart);
+    const rightSlice = new SimpleEntity(this.fruitX + 40, this.fruitY, this.rightPart);
     this.container.addChild(rightSlice.bitmap);
 
     this.animate(leftSlice);
