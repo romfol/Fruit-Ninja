@@ -139,6 +139,7 @@ var Background = function Background() {
   this.image = new Image();
   this.image.src = _game_bg.default;
   this.bitmap = new createjs.Bitmap(this.image);
+  console.log(11, window.innerWidth, this.image, this.image.height);
   this.bitmap.scaleX = window.innerWidth / this.image.width;
   this.bitmap.scaleY = window.innerHeight / this.image.height;
 };
@@ -166,59 +167,14 @@ var PlayButton = function PlayButton() {
   this.image = new Image();
   this.image.src = _playBtn.default;
   this.bitmap = new createjs.Bitmap(this.image);
+  this.bitmap.scaleX = window.innerWidth / this.image.width;
+  this.bitmap.scaleY = window.innerHeight / this.image.height;
   this.bitmap.x = (window.innerWidth - this.image.width) / 2;
   this.bitmap.y = 20;
 };
 
 exports.PlayButton = PlayButton;
-},{"../assets/play-btn.png":"assets/play-btn.png"}],"src/fruit.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Fruit = void 0;
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Fruit = function Fruit(x, y, fruit, randomId) {
-  _classCallCheck(this, Fruit);
-
-  this.randomId = randomId;
-  this.image = new Image();
-  this.image.src = fruit;
-  this.bitmap = new createjs.Bitmap(this.image);
-  this.bitmap.x = x;
-  this.bitmap.y = y;
-  this.bitmap.scaleX = 0.5;
-  this.bitmap.scaleY = 0.5;
-};
-
-exports.Fruit = Fruit;
-},{}],"src/simple-entity.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.SimpleEntity = void 0;
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var SimpleEntity = function SimpleEntity(x, y, entity) {
-  _classCallCheck(this, SimpleEntity);
-
-  this.image = new Image();
-  this.image.src = entity;
-  this.bitmap = new createjs.Bitmap(this.image);
-  this.bitmap.x = x;
-  this.bitmap.y = y;
-  this.bitmap.scaleX = 0.5;
-  this.bitmap.scaleY = 0.5;
-};
-
-exports.SimpleEntity = SimpleEntity;
-},{}],"assets/game_fruit_blue.png":[function(require,module,exports) {
+},{"../assets/play-btn.png":"assets/play-btn.png"}],"assets/game_fruit_blue.png":[function(require,module,exports) {
 module.exports = "/game_fruit_blue.a68da932.png";
 },{}],"assets/game_fruit_blue_s.png":[function(require,module,exports) {
 module.exports = "/game_fruit_blue_s.30143d5f.png";
@@ -333,86 +289,7 @@ var random = function random(max) {
 };
 
 exports.random = random;
-},{"../assets/game_fruit_blue.png":"assets/game_fruit_blue.png","../assets/game_fruit_blue_s.png":"assets/game_fruit_blue_s.png","../assets/game_fruit_blue_l.png":"assets/game_fruit_blue_l.png","../assets/game_fruit_blue_r.png":"assets/game_fruit_blue_r.png","../assets/game_fruit_green.png":"assets/game_fruit_green.png","../assets/game_fruit_green_s.png":"assets/game_fruit_green_s.png","../assets/game_fruit_green_l.png":"assets/game_fruit_green_l.png","../assets/game_fruit_green_r.png":"assets/game_fruit_green_r.png","../assets/game_fruit_orange.png":"assets/game_fruit_orange.png","../assets/game_fruit_orange_s.png":"assets/game_fruit_orange_s.png","../assets/game_fruit_orange_l.png":"assets/game_fruit_orange_l.png","../assets/game_fruit_orange_r.png":"assets/game_fruit_orange_r.png","../assets/game_fruit_purple.png":"assets/game_fruit_purple.png","../assets/game_fruit_purple_s.png":"assets/game_fruit_purple_s.png","../assets/game_fruit_purple_l.png":"assets/game_fruit_purple_l.png","../assets/game_fruit_purple_r.png":"assets/game_fruit_purple_r.png","../assets/game_fruit_red.png":"assets/game_fruit_red.png","../assets/game_fruit_red_s.png":"assets/game_fruit_red_s.png","../assets/game_fruit_red_l.png":"assets/game_fruit_red_l.png","../assets/game_fruit_red_r.png":"assets/game_fruit_red_r.png","../assets/game_fruit_yellow.png":"assets/game_fruit_yellow.png","../assets/game_fruit_yellow_s.png":"assets/game_fruit_yellow_s.png","../assets/game_fruit_yellow_l.png":"assets/game_fruit_yellow_l.png","../assets/game_fruit_yellow_r.png":"assets/game_fruit_yellow_r.png"}],"src/fruit-sliced.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.FruitSliced = void 0;
-
-var _simpleEntity = require("./simple-entity");
-
-var _helpers = require("../helpers");
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var FruitSliced =
-/*#__PURE__*/
-function () {
-  function FruitSliced(x, y, leftPart, rightPart) {
-    _classCallCheck(this, FruitSliced);
-
-    this.leftPart = leftPart;
-    this.rightPart = rightPart;
-    this.container = new createjs.Container();
-    this.fruitX = x;
-    this.fruitY = y;
-  }
-
-  _createClass(FruitSliced, [{
-    key: "init",
-    value: function init() {
-      var leftSlice = new _simpleEntity.SimpleEntity(this.fruitX - 40, this.fruitY, this.leftPart);
-      this.container.addChild(leftSlice.bitmap);
-      var rightSlice = new _simpleEntity.SimpleEntity(this.fruitX + 40, this.fruitY, this.rightPart);
-      this.container.addChild(rightSlice.bitmap);
-      this.animate(leftSlice);
-      this.animate(rightSlice);
-    }
-  }, {
-    key: "animate",
-    value: function animate(slice) {
-      var _this = this;
-
-      createjs.Tween.get(slice.bitmap).to({
-        y: slice.bitmap.y - (0, _helpers.random)(50)
-      }, 200).wait(30).to({
-        rotation: (0, _helpers.random)(200),
-        x: slice.bitmap.x + (0, _helpers.random)(50, -50),
-        y: window.innerHeight
-      }, 150000 / slice.bitmap.y).call(function () {
-        _this.container.removeChild(slice.bitmap);
-      });
-    }
-  }]);
-
-  return FruitSliced;
-}();
-
-exports.FruitSliced = FruitSliced;
-},{"./simple-entity":"src/simple-entity.js","../helpers":"helpers/index.js"}],"src/splashed-background.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.SplashedBackground = void 0;
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var SplashedBackground = function SplashedBackground() {
-  _classCallCheck(this, SplashedBackground);
-
-  this.container = new createjs.Container();
-};
-
-exports.SplashedBackground = SplashedBackground;
-},{}],"src/fruits.js":[function(require,module,exports) {
+},{"../assets/game_fruit_blue.png":"assets/game_fruit_blue.png","../assets/game_fruit_blue_s.png":"assets/game_fruit_blue_s.png","../assets/game_fruit_blue_l.png":"assets/game_fruit_blue_l.png","../assets/game_fruit_blue_r.png":"assets/game_fruit_blue_r.png","../assets/game_fruit_green.png":"assets/game_fruit_green.png","../assets/game_fruit_green_s.png":"assets/game_fruit_green_s.png","../assets/game_fruit_green_l.png":"assets/game_fruit_green_l.png","../assets/game_fruit_green_r.png":"assets/game_fruit_green_r.png","../assets/game_fruit_orange.png":"assets/game_fruit_orange.png","../assets/game_fruit_orange_s.png":"assets/game_fruit_orange_s.png","../assets/game_fruit_orange_l.png":"assets/game_fruit_orange_l.png","../assets/game_fruit_orange_r.png":"assets/game_fruit_orange_r.png","../assets/game_fruit_purple.png":"assets/game_fruit_purple.png","../assets/game_fruit_purple_s.png":"assets/game_fruit_purple_s.png","../assets/game_fruit_purple_l.png":"assets/game_fruit_purple_l.png","../assets/game_fruit_purple_r.png":"assets/game_fruit_purple_r.png","../assets/game_fruit_red.png":"assets/game_fruit_red.png","../assets/game_fruit_red_s.png":"assets/game_fruit_red_s.png","../assets/game_fruit_red_l.png":"assets/game_fruit_red_l.png","../assets/game_fruit_red_r.png":"assets/game_fruit_red_r.png","../assets/game_fruit_yellow.png":"assets/game_fruit_yellow.png","../assets/game_fruit_yellow_s.png":"assets/game_fruit_yellow_s.png","../assets/game_fruit_yellow_l.png":"assets/game_fruit_yellow_l.png","../assets/game_fruit_yellow_r.png":"assets/game_fruit_yellow_r.png"}],"src/fruits.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -420,13 +297,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Fruits = void 0;
 
-var _fruit = require("./fruit");
-
-var _simpleEntity = require("./simple-entity");
-
-var _fruitSliced = require("./fruit-sliced");
-
-var _splashedBackground = require("./splashed-background");
+var _ = require("./");
 
 var _helpers = require("../helpers");
 
@@ -455,7 +326,7 @@ function () {
     value: function start() {
       var _this = this;
 
-      this.splashedBackground = new _splashedBackground.SplashedBackground();
+      this.splashedBackground = new _.SplashedBackground();
       this.container.addChild(this.splashedBackground.container);
       setInterval(function () {
         _this.createAndLaunch();
@@ -471,7 +342,7 @@ function () {
     key: "createFruit",
     value: function createFruit() {
       var randomFruitId = randomFruit();
-      var fruit = new _fruit.Fruit((0, _helpers.random)(window.innerWidth), window.innerHeight, _helpers.fruits[randomFruitId][0], randomFruitId);
+      var fruit = new _.Fruit((0, _helpers.random)(window.innerWidth), window.innerHeight, _helpers.fruits[randomFruitId][0], randomFruitId);
       fruit.bitmap.addEventListener('mousedown', this.fruitOnCLick.bind(this, fruit));
       this.container.addChild(fruit.bitmap);
       return fruit;
@@ -487,14 +358,14 @@ function () {
   }, {
     key: "addSlicedFruit",
     value: function addSlicedFruit(fruit) {
-      var fruitSliced = new _fruitSliced.FruitSliced(fruit.bitmap.x, fruit.bitmap.y, _helpers.fruits[fruit.randomId][2], _helpers.fruits[fruit.randomId][3]);
+      var fruitSliced = new _.FruitSliced(fruit.bitmap.x, fruit.bitmap.y, _helpers.fruits[fruit.randomId][2], _helpers.fruits[fruit.randomId][3]);
       this.container.addChild(fruitSliced.container);
       fruitSliced.init();
     }
   }, {
     key: "addFruitSplash",
     value: function addFruitSplash(fruit) {
-      var fruitSplash = new _simpleEntity.SimpleEntity(fruit.bitmap.x - 100, fruit.bitmap.y - 60, _helpers.fruits[fruit.randomId][1]);
+      var fruitSplash = new _.SimpleEntity(fruit.bitmap.x - 100, fruit.bitmap.y - 60, _helpers.fruits[fruit.randomId][1]);
       this.splashedBackground.container.addChild(fruitSplash.bitmap);
     }
   }, {
@@ -525,7 +396,7 @@ function () {
 }();
 
 exports.Fruits = Fruits;
-},{"./fruit":"src/fruit.js","./simple-entity":"src/simple-entity.js","./fruit-sliced":"src/fruit-sliced.js","./splashed-background":"src/splashed-background.js","../helpers":"helpers/index.js"}],"src/game-result.js":[function(require,module,exports) {
+},{"./":"src/index.js","../helpers":"helpers/index.js"}],"src/game-result.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -538,51 +409,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var GameResult = function GameResult(score) {
   _classCallCheck(this, GameResult);
 
-  this.text = new createjs.Text("Total score: ".concat(score), "20px Arial", "white");
+  this.text = new createjs.Text("Total score: ".concat(score), '20px Arial', 'white');
   this.text.x = (window.innerWidth - 130) / 2;
   this.text.y = window.innerHeight / 2;
-  ;
 };
 
 exports.GameResult = GameResult;
-},{}],"src/timer.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Timer = void 0;
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Timer = function Timer() {
-  _classCallCheck(this, Timer);
-
-  this.timer = new createjs.Text(30, "20px Arial", "white");
-  this.timer.x = 20;
-  this.timer.y = 20;
-};
-
-exports.Timer = Timer;
-},{}],"src/result-text.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.ResultText = void 0;
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var ResultText = function ResultText(score, x, y) {
-  _classCallCheck(this, ResultText);
-
-  this.text = new createjs.Text("Total score: ".concat(score), "20px Arial", "white");
-  this.text.x = x;
-  this.text.y = y;
-};
-
-exports.ResultText = ResultText;
 },{}],"src/game-data.js":[function(require,module,exports) {
 "use strict";
 
@@ -591,9 +423,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.GameData = void 0;
 
-var _timer = require("./timer");
-
-var _resultText = require("./result-text");
+var _ = require("./");
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -613,9 +443,9 @@ function () {
   _createClass(GameData, [{
     key: "init",
     value: function init() {
-      this.timer = new _timer.Timer();
+      this.timer = new _.Timer();
       this.container.addChild(this.timer.timer);
-      this.text = new _resultText.ResultText(window.points, window.innerWidth - 150, 20);
+      this.text = new _.ResultText(window.points, window.innerWidth - 150, 20);
       this.container.addChild(this.text.text);
       this.timerId = setInterval(this.countdown.bind(this), 1000);
     }
@@ -635,18 +465,268 @@ function () {
 }();
 
 exports.GameData = GameData;
-},{"./timer":"src/timer.js","./result-text":"src/result-text.js"}],"app.js":[function(require,module,exports) {
+},{"./":"src/index.js"}],"src/timer.js":[function(require,module,exports) {
 "use strict";
 
-var _background = require("./src/background");
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Timer = void 0;
 
-var _playButton = require("./src/play-button");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _fruits = require("./src/fruits");
+var Timer = function Timer() {
+  _classCallCheck(this, Timer);
 
-var _gameResult = require("./src/game-result");
+  this.timer = new createjs.Text(30, '20px Arial', 'white');
+  this.timer.x = 20;
+  this.timer.y = 20;
+};
 
-var _gameData = require("./src/game-data");
+exports.Timer = Timer;
+},{}],"src/result-text.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ResultText = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var ResultText = function ResultText(score, x, y) {
+  _classCallCheck(this, ResultText);
+
+  this.text = new createjs.Text("Total score: ".concat(score), '20px Arial', 'white');
+  this.text.x = x;
+  this.text.y = y;
+};
+
+exports.ResultText = ResultText;
+},{}],"src/fruit.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Fruit = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Fruit = function Fruit(x, y, fruit, randomId) {
+  _classCallCheck(this, Fruit);
+
+  this.randomId = randomId;
+  this.image = new Image();
+  this.image.src = fruit;
+  this.bitmap = new createjs.Bitmap(this.image);
+  this.bitmap.x = x;
+  this.bitmap.y = y;
+  this.bitmap.scaleX = 0.5;
+  this.bitmap.scaleY = 0.5;
+};
+
+exports.Fruit = Fruit;
+},{}],"src/simple-entity.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.SimpleEntity = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var SimpleEntity = function SimpleEntity(x, y, entity) {
+  _classCallCheck(this, SimpleEntity);
+
+  this.image = new Image();
+  this.image.src = entity;
+  this.bitmap = new createjs.Bitmap(this.image);
+  this.bitmap.x = x;
+  this.bitmap.y = y;
+  this.bitmap.scaleX = 0.5;
+  this.bitmap.scaleY = 0.5;
+};
+
+exports.SimpleEntity = SimpleEntity;
+},{}],"src/fruit-sliced.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.FruitSliced = void 0;
+
+var _ = require("./");
+
+var _helpers = require("../helpers");
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var FruitSliced =
+/*#__PURE__*/
+function () {
+  function FruitSliced(x, y, leftPart, rightPart) {
+    _classCallCheck(this, FruitSliced);
+
+    this.leftPart = leftPart;
+    this.rightPart = rightPart;
+    this.container = new createjs.Container();
+    this.fruitX = x;
+    this.fruitY = y;
+  }
+
+  _createClass(FruitSliced, [{
+    key: "init",
+    value: function init() {
+      var leftSlice = new _.SimpleEntity(this.fruitX - 40, this.fruitY, this.leftPart);
+      this.container.addChild(leftSlice.bitmap);
+      var rightSlice = new _.SimpleEntity(this.fruitX + 40, this.fruitY, this.rightPart);
+      this.container.addChild(rightSlice.bitmap);
+      this.animate(leftSlice);
+      this.animate(rightSlice);
+    }
+  }, {
+    key: "animate",
+    value: function animate(slice) {
+      var _this = this;
+
+      createjs.Tween.get(slice.bitmap).to({
+        y: slice.bitmap.y - (0, _helpers.random)(50)
+      }, 200).wait(30).to({
+        rotation: (0, _helpers.random)(200),
+        x: slice.bitmap.x + (0, _helpers.random)(50, -50),
+        y: window.innerHeight
+      }, 150000 / slice.bitmap.y).call(function () {
+        _this.container.removeChild(slice.bitmap);
+      });
+    }
+  }]);
+
+  return FruitSliced;
+}();
+
+exports.FruitSliced = FruitSliced;
+},{"./":"src/index.js","../helpers":"helpers/index.js"}],"src/splashed-background.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.SplashedBackground = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var SplashedBackground = function SplashedBackground() {
+  _classCallCheck(this, SplashedBackground);
+
+  this.container = new createjs.Container();
+};
+
+exports.SplashedBackground = SplashedBackground;
+},{}],"src/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "Background", {
+  enumerable: true,
+  get: function () {
+    return _background.Background;
+  }
+});
+Object.defineProperty(exports, "PlayButton", {
+  enumerable: true,
+  get: function () {
+    return _playButton.PlayButton;
+  }
+});
+Object.defineProperty(exports, "Fruits", {
+  enumerable: true,
+  get: function () {
+    return _fruits.Fruits;
+  }
+});
+Object.defineProperty(exports, "GameResult", {
+  enumerable: true,
+  get: function () {
+    return _gameResult.GameResult;
+  }
+});
+Object.defineProperty(exports, "GameData", {
+  enumerable: true,
+  get: function () {
+    return _gameData.GameData;
+  }
+});
+Object.defineProperty(exports, "Timer", {
+  enumerable: true,
+  get: function () {
+    return _timer.Timer;
+  }
+});
+Object.defineProperty(exports, "ResultText", {
+  enumerable: true,
+  get: function () {
+    return _resultText.ResultText;
+  }
+});
+Object.defineProperty(exports, "Fruit", {
+  enumerable: true,
+  get: function () {
+    return _fruit.Fruit;
+  }
+});
+Object.defineProperty(exports, "SimpleEntity", {
+  enumerable: true,
+  get: function () {
+    return _simpleEntity.SimpleEntity;
+  }
+});
+Object.defineProperty(exports, "FruitSliced", {
+  enumerable: true,
+  get: function () {
+    return _fruitSliced.FruitSliced;
+  }
+});
+Object.defineProperty(exports, "SplashedBackground", {
+  enumerable: true,
+  get: function () {
+    return _splashedBackground.SplashedBackground;
+  }
+});
+
+var _background = require("./background");
+
+var _playButton = require("./play-button");
+
+var _fruits = require("./fruits");
+
+var _gameResult = require("./game-result");
+
+var _gameData = require("./game-data");
+
+var _timer = require("./timer");
+
+var _resultText = require("./result-text");
+
+var _fruit = require("./fruit");
+
+var _simpleEntity = require("./simple-entity");
+
+var _fruitSliced = require("./fruit-sliced");
+
+var _splashedBackground = require("./splashed-background");
+},{"./background":"src/background.js","./play-button":"src/play-button.js","./fruits":"src/fruits.js","./game-result":"src/game-result.js","./game-data":"src/game-data.js","./timer":"src/timer.js","./result-text":"src/result-text.js","./fruit":"src/fruit.js","./simple-entity":"src/simple-entity.js","./fruit-sliced":"src/fruit-sliced.js","./splashed-background":"src/splashed-background.js"}],"app.js":[function(require,module,exports) {
+"use strict";
+
+var _src = require("./src");
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -670,9 +750,9 @@ function () {
   _createClass(Sketch, [{
     key: "addObjects",
     value: function addObjects() {
-      this.background = new _background.Background();
+      this.background = new _src.Background();
       this.stage.addChild(this.background.bitmap);
-      this.play = new _playButton.PlayButton();
+      this.play = new _src.PlayButton();
       this.stage.addChild(this.play.bitmap);
       this.play.bitmap.addEventListener('click', this.scene1.bind(this));
       createjs.Ticker.setFPS(60);
@@ -684,10 +764,10 @@ function () {
       var _this = this;
 
       this.stage.removeChild(this.play.bitmap);
-      this.fruits = new _fruits.Fruits();
+      this.fruits = new _src.Fruits();
       this.stage.addChild(this.fruits.container);
       this.fruits.start();
-      this.gameData = new _gameData.GameData();
+      this.gameData = new _src.GameData();
       this.stage.addChild(this.gameData.container);
       this.gameData.init();
       setTimeout(function () {
@@ -701,7 +781,7 @@ function () {
   }, {
     key: "scene2",
     value: function scene2() {
-      this.gameResult = new _gameResult.GameResult(window.points);
+      this.gameResult = new _src.GameResult(window.points);
       this.stage.addChild(this.gameResult.text);
     }
   }]);
@@ -710,7 +790,7 @@ function () {
 }();
 
 var app = new Sketch();
-},{"./src/background":"src/background.js","./src/play-button":"src/play-button.js","./src/fruits":"src/fruits.js","./src/game-result":"src/game-result.js","./src/game-data":"src/game-data.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./src":"src/index.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -738,7 +818,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45623" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63320" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

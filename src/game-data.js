@@ -1,5 +1,4 @@
-import { Timer } from './timer';
-import { ResultText } from './result-text';
+import { Timer, ResultText } from './';
 
 export class GameData {
   constructor() {

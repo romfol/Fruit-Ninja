@@ -24,42 +24,12 @@ import yellowFruitLeft from '../assets/game_fruit_yellow_l.png';
 import yellowFruitRight from '../assets/game_fruit_yellow_r.png';
 
 export const fruits = [
-  [
-   blueFruit,
-   blueFruitSplashed,
-   blueFruitLeft,
-   blueFruitRight
-  ],
-  [
-   greenFruit,
-   greenFruitSplashed,
-   greenFruitLeft,
-   greenFruitRight
-  ],
-  [
-   orangeFruit,
-   orangeFruitSplashed,
-   orangeFruitLeft,
-   orangeFruitRight
-  ],
-  [
-   purpleFruit,
-   purpleFruitSplashed,
-   purpleFruitLeft,
-   purpleFruitRight
-  ],
-  [
-   redFruit,
-   redFruitSplashed,
-   redFruitLeft,
-   redFruitRight
-  ],
-  [
-   yellowFruit,
-   yellowFruitSplashed,
-   yellowFruitLeft,
-   yellowFruitRight
-  ]
+  [blueFruit, blueFruitSplashed, blueFruitLeft, blueFruitRight],
+  [greenFruit, greenFruitSplashed, greenFruitLeft, greenFruitRight],
+  [orangeFruit, orangeFruitSplashed, orangeFruitLeft, orangeFruitRight],
+  [purpleFruit, purpleFruitSplashed, purpleFruitLeft, purpleFruitRight],
+  [redFruit, redFruitSplashed, redFruitLeft, redFruitRight],
+  [yellowFruit, yellowFruitSplashed, yellowFruitLeft, yellowFruitRight],
 ];
 
 export const random = (max, min = 0) => min + (max - min) * Math.random();

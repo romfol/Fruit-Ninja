@@ -1,4 +1,4 @@
-import { SimpleEntity } from './simple-entity';
+import { SimpleEntity } from './';
 import { random } from '../helpers';
 
 export class FruitSliced {
@@ -12,7 +12,7 @@ export class FruitSliced {
   }
 
   init() {
-    const leftSlice = new SimpleEntity(this.fruitX - 40, this.fruitY , this.leftPart);
+    const leftSlice = new SimpleEntity(this.fruitX - 40, this.fruitY, this.leftPart);
     this.container.addChild(leftSlice.bitmap);
 
     const rightSlice = new SimpleEntity(this.fruitX + 40, this.fruitY, this.rightPart);
@@ -24,24 +24,23 @@ export class FruitSliced {
 
   animate(slice) {
     createjs.Tween.get(slice.bitmap)
-    .to(
-      {
-        y: slice.bitmap.y - random(50),
-      },
-      200
-    )
-    .wait(30)
-    .to(
-      {
-        rotation: random(200),
-        x: slice.bitmap.x + random(50, -50),
-        y: window.innerHeight,
-      },
-      150000/slice.bitmap.y
-    )
-    .call(() => {
-      this.container.removeChild(slice.bitmap);
-    });
+      .to(
+        {
+          y: slice.bitmap.y - random(50),
+        },
+        200
+      )
+      .wait(30)
+      .to(
+        {
+          rotation: random(200),
+          x: slice.bitmap.x + random(50, -50),
+          y: window.innerHeight,
+        },
+        150000 / slice.bitmap.y
+      )
+      .call(() => {
+        this.container.removeChild(slice.bitmap);
+      });
   }
-
 }
