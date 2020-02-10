@@ -139,7 +139,6 @@ var Background = function Background() {
   this.image = new Image();
   this.image.src = _game_bg.default;
   this.bitmap = new createjs.Bitmap(this.image);
-  console.log(11, window.innerWidth, this.image, this.image.height);
   this.bitmap.scaleX = window.innerWidth / this.image.width;
   this.bitmap.scaleY = window.innerHeight / this.image.height;
 };
@@ -167,8 +166,6 @@ var PlayButton = function PlayButton() {
   this.image = new Image();
   this.image.src = _playBtn.default;
   this.bitmap = new createjs.Bitmap(this.image);
-  this.bitmap.scaleX = window.innerWidth / this.image.width;
-  this.bitmap.scaleY = window.innerHeight / this.image.height;
   this.bitmap.x = (window.innerWidth - this.image.width) / 2;
   this.bitmap.y = 20;
 };
@@ -818,7 +815,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63320" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34355" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
