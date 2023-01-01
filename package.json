@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "assets": "^3.0.1",
-    "parcel": "^1.12.4"
+    "parcel": "^2.8.2"
   },
   "scripts": {
     "start": "parcel index.html --open"
